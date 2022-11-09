@@ -26,41 +26,28 @@
                         <th scope="col">Instansi</th>
                         <th scope="col">Dosen Pengampu</th>
                         <th scope="col">Scan PKL</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Rina</td>
-                        <td>Semester 5 </td>
-                        <td>Gudang Garam</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Rina</td>
-                        <td>Semester 5</td>
-                        <td>Surya</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Rina</td>
-                        <td>Semester 5</td>
-                        <td>PT Maju Mundur</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Rina</td>
-                        <td>Semester 5</td>
-                        <td>Surya</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                    </tr>
+                    @foreach ($datapkl as $item)
+                        <?php
+                        // dd($item);
+                        $user = App\Models\User::where('id', '=', $item['userid'])
+                            ->get()
+                            ->toarray();
+                        // dd($user);
+                        ?>
+                        <tr>
+                            <td>{{ $item['id'] }}</td>
+                            <td>{{ $user[0]['name'] }}</td>
+                            <td>{{ $item['semester'] }}</td>
+                            <td>{{ $item['instansi'] }}</td>
+                            <td>{{ $item['dosenpengampu'] }}</td>
+                            <td>{{ $item['scanpkl'] }}</td>
+                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

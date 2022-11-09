@@ -51,7 +51,8 @@
                     @error('nim')
                     is-invalid    
                     @enderror"
-                        id="nim" name="nim" placeholder="Masukkan NIM anda" required value="{{ old('nim') }}">
+                        id="nim" name="nim" placeholder="Masukkan NIM anda" required
+                        value="{{ old('nim', auth()->user()->nim) }}">
                     @error('nim')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -66,7 +67,7 @@
                     is-invalid    
                     @enderror"
                         id="jurusan" name="jurusan" placeholder="Masukkan jurusan anda" required
-                        value="{{ old('jurusan') }}">
+                        value="{{ old('jurusan', auth()->user()->jurusan) }}">
                     @error('jurusan')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -81,7 +82,7 @@
                     is-invalid    
                     @enderror"
                         id="angkatan" name="angkatan" placeholder="Masukkan Angkatan anda" required
-                        value="{{ old('angkatan') }}">
+                        value="{{ old('angkatan', auth()->user()->angkatan) }}">
                     @error('angkatan')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -96,7 +97,7 @@
                     is-invalid    
                     @enderror"
                         id="alamat" name="alamat" placeholder="Masukkan alamat anda" required
-                        value="{{ old('alamat') }}">
+                        value="{{ old('alamat', auth()->user()->alamat) }}">
                     @error('alamat')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -111,7 +112,7 @@
                     is-invalid    
                     @enderror"
                         id="nomortlp" name="nomortlp" placeholder="Masukkan Nomor Telepon anda" required
-                        value="{{ old('nomortlp') }}">
+                        value="{{ old('nomortlp', auth()->user()->nomortlp) }}">
                     @error('nomortlp')
                         <div class="invalid-feedback">
                             {{ $message }}

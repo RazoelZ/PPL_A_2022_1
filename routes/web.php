@@ -1,7 +1,16 @@
 <?php
 
+use App\Http\Controllers\EditProfileMahasiswaController;
+use App\Http\Controllers\IRSDosenController;
+use App\Http\Controllers\IRSMahasiswaController;
+use App\Http\Controllers\KHSDosenController;
+use App\Http\Controllers\KHSMahasiswaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PKLDosenController;
+use App\Http\Controllers\PKLMahasiswaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SkripsiDosenController;
+use App\Http\Controllers\SkripsiMahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,41 +36,40 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboardadmin/register', [RegisterController::class, 'index']);
 Route::post('/dashboardadmin/register', [RegisterController::class, 'store']);
 
-
-
 //Mahasiswa
 Route::get('/dashboardmahasiswa', function () {
     return view('mahasiswa.home');
 });
-Route::get('/dashboardmahasiswa/IsiIRSMahasiswa', function () {
-    return view('mahasiswa.isiirs');
-});
-Route::get('/dashboardmahasiswa/IsiKHSMahasiswa', function () {
-    return view('mahasiswa.isikhs');
-});
-Route::get('/dashboardmahasiswa/IsiPKLMahasiswa', function () {
-    return view('mahasiswa.isipkl');
-});
-Route::get('/dashboardmahasiswa/IsiSkripsiMahasiswa', function () {
-    return view('mahasiswa.isiskripsi');
-});
+
+//ISI IRS
+Route::post('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'store']);
+Route::get('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'index']);
+
+//ISI KHS
+Route::get('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'index']);
+Route::post('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'store']);
+
+//ISI PKL
+Route::get('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'index']);
+Route::post('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'store']);
+
+//ISI SKRIPSI
+Route::get('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'index']);
+Route::post('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'store']);
+
+//edit
+Route::get('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'index']);
+Route::put('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'update']);
 
 //Dosen
 Route::get('/dashboarddosen', function () {
     return view('dosen.homedosen');
 });
-Route::get('/dashboarddosen/irs', function () {
-    return view('dosen.irsdosen');
-});
-Route::get('/dashboarddosen/khs', function () {
-    return view('dosen.khsdosen');
-});
-Route::get('/dashboarddosen/pkl', function () {
-    return view('dosen.pkldosen');
-});
-Route::get('/dashboarddosen/skripsi', function () {
-    return view('dosen.skripsidosen');
-});
+
+Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index']);
+Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index']);
+Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index']);
+Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index']);
 
 //Admin
 

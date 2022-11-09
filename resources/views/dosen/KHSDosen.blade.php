@@ -32,61 +32,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Rendi</td>
-                        <td>Semester 5 </td>
-                        <td>21</td>
-                        <td>80</td>
-                        <td>34.4</td>
-                        <td>36.5</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jiwa</td>
-                        <td>Semester 5 </td>
-                        <td>21</td>
-                        <td>80</td>
-                        <td>34.4</td>
-                        <td>36.5</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Aryo</td>
-                        <td>Semester 5 </td>
-                        <td>21</td>
-                        <td>80</td>
-                        <td>34.4</td>
-                        <td>36.5</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Farhan</td>
-                        <td>Semester 5 </td>
-                        <td>21</td>
-                        <td>80</td>
-                        <td>34.4</td>
-                        <td>36.5</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Vigy</td>
-                        <td>Semester 5 </td>
-                        <td>21</td>
-                        <td>80</td>
-                        <td>34.4</td>
-                        <td>36.5</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
+                    @foreach ($datakhs as $item)
+                        <?php
+                        // dd($item);
+                        $user = App\Models\User::where('id', '=', $item['userid'])
+                            ->get()
+                            ->toarray();
+                        // dd($user);
+                        ?>
+                        <tr>
+                            <td>{{ $item['id'] }}</td>
+                            <td>{{ $user[0]['name'] }}</td>
+                            <td>{{ $item['semester'] }}</td>
+                            <td>{{ $item['skssemester'] }}</td>
+                            <td>{{ $item['skskumulatif'] }}</td>
+                            <td>{{ $item['ipsemester'] }}</td>
+                            <td>{{ $item['ipkumulatif'] }}</td>
+                            <td>{{ $item['scankhs'] }}</td>
+                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

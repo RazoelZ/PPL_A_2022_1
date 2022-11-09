@@ -27,7 +27,15 @@ class LoginController extends Controller
         // ];
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboardmahasiswa');
+            if (auth()->user()->level == "user") {
+                return redirect()->intended('/dashboardmahasiswa');
+            } else if (auth()->user()->level == "admin") {
+                return redirect()->intended('/dashboardadmin');
+            } else if (auth()->user()->level == "dosen") {
+                return redirect()->intended('/dashboarddosen');
+            } else if (auth()->user()->level == "department") {
+                return redirect()->intended('/dashboarddepartment');
+            }
         }
 
         return back()->with('logingagal', 'Login gagal!');

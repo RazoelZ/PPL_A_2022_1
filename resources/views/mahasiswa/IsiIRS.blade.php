@@ -70,6 +70,10 @@
                             </div>
                         @enderror
                     </div>
+                    {{-- <div class="form-group">
+                        <input type="userid" class="form-control" id="userid" placeholder="userid"
+                            value="{{ auth()->user()->id }}" hidden>
+                    </div> --}}
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                         Submit
                     </button>

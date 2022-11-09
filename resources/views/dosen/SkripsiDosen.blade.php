@@ -30,43 +30,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Rani</td>
-                        <td>Semester 5 </td>
-                        <td>Gudang Garam</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Rani</td>
-                        <td>Semester 5</td>
-                        <td>Surya</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Rani</td>
-                        <td>Semester 5</td>
-                        <td>PT Maju Mundur</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Rani</td>
-                        <td>Semester 5</td>
-                        <td>Surya</td>
-                        <td>Aryo Pradana</td>
-                        <td>scanpkl.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
+                    @foreach ($dataskripsi as $item)
+                        <?php
+                        // dd($item);
+                        $user = App\Models\User::where('id', '=', $item['userid'])
+                            ->get()
+                            ->toarray();
+                        // dd($user);
+                        ?>
+                        <tr>
+                            <td>{{ $item['id'] }}</td>
+                            <td>{{ $user[0]['name'] }}</td>
+                            <td>{{ $item['semester'] }}</td>
+                            <td>{{ $item['tglsidang'] }}</td>
+                            <td>{{ $item['dosenpembimbing'] }}</td>
+                            <td>{{ $item['scansidang'] }}</td>
+                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

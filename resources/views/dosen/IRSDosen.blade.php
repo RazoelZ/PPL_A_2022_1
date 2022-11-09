@@ -29,30 +29,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- <tr>
-                        <th scope="row">1</th>
-                        <td>Joko</td>
-                        <td>Semester 1</td>
-                        <td>21</td>
-                        <td>scansks.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Alif</td>
-                        <td>Semester 1</td>
-                        <td>22</td>
-                        <td>scansks.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>David</td>
-                        <td>Semester 1</td>
-                        <td>24</td>
-                        <td>scansks.pdf</td>
-                        <td><button type="button" class="btn btn-success">Setujui</button>
-                    </tr> --}}
+                    @foreach ($datairs as $item)
+                        <?php
+                        // dd($item);
+                        $user = App\Models\User::where('id', '=', $item['userid'])
+                            ->get()
+                            ->toarray();
+                        // dd($user);
+                        ?>
+                        <tr>
+                            <td>{{ $item['id'] }}</td>
+                            <td>{{ $user[0]['name'] }}</td>
+                            <td>{{ $item['semester'] }}</td>
+                            <td>{{ $item['jmlsks'] }}</td>
+                            <td>{{ $item['scansks'] }}</td>
+                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -34,6 +34,48 @@
                 </div>
             @enderror
         </div>
+        <label for="nim">NIM</label>
+        <div class="form-group">
+            <input type="text"
+                class="form-control 
+                    @error('nim')
+                    is-invalid    
+                    @enderror"
+                id="nim" name="nim" placeholder="Masukkan NIM anda" required value="{{ old('nim') }}">
+            @error('nim')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <label for="jurusan">Jurusan</label>
+        <div class="form-group">
+            <input type="text"
+                class="form-control 
+                    @error('jurusan')
+                    is-invalid    
+                    @enderror"
+                id="jurusan" name="jurusan" placeholder="Masukkan jurusan anda" required value="{{ old('jurusan') }}">
+            @error('jurusan')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <label for="angkatan">Angkatan</label>
+        <div class="form-group">
+            <input type="text"
+                class="form-control 
+                         @error('angkatan')
+                    is-invalid    
+                    @enderror"
+                id="angkatan" name="angkatan" placeholder="Masukkan Angkatan anda" required value="{{ old('angkatan') }}">
+            @error('angkatan')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
         <label for="level">level Aktif</label>
         <div class="form-group">
             <select class="form-control @error('level')

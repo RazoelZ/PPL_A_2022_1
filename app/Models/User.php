@@ -25,7 +25,8 @@ class User extends Authenticatable
         'jurusan',
         'angkatan',
         'alamat',
-        'nomortlp'
+        'nomortlp',
+        'level'
     ];
 
     /**
@@ -46,4 +47,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function IRS()
+    {
+        return $this->belongsTo(IRS::class);
+    }
+
+    public function KHS()
+    {
+        return $this->belongsTo(KHS::class);
+    }
+
+    public function PKL()
+    {
+        return $this->belongsTo(PKL::class);
+    }
+
+    public function Skrpsi()
+    {
+        return $this->belongsTo(Skripsi::class);
+    }
 }

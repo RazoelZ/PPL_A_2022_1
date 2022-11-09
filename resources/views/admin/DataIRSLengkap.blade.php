@@ -1,12 +1,12 @@
 @extends('layouts.adminmain')
 
 @section('container')
-    <div class="container col-10">
+    <div class="container col-12">
         <div class=" bg-white mb-4 rounded-4 text-left mt-4">
             <form>
                 <div class="col-md-12">
                     <label for="Mahasiswa" class="form-label"></label>
-                    <h1 class="fs-1 text-center fw-bold">KHS Mahasiswa</h1>
+                    <h1 class="fs-1 text-center fw-bold">Data Lengkap Mahasiswa</h1>
                     <p class="text-center">Cari Mahasiswa</p>
                     <input type="text" class="form-control" id="Mahasiswa" placeholder="Contoh : Joko Subagyo">
                 </div>
@@ -31,7 +31,7 @@
                         <th scope="row">1</th>
                         <td>Rendi</td>
                         <td>Semester 5 </td>
-                        <td><button type="button" class="btn btn-warning">Edit</button>
+                        <td><button href="/" type="button" class="btn btn-warning">Edit</button>
                         <td><button type="button" class="btn btn-danger">Hapus</button></td>
                     </tr>
                     <tr>
