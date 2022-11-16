@@ -43,7 +43,7 @@
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['jmlsks'] }}</td>
                             <td>{{ $item['scansks'] }}</td>
-                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                            <td><a href="/dashboarddosen/irs/verify/{{ $item['id'] }}">Setujui</a></td>
                         </tr>
                     @endforeach
                 </tbody>

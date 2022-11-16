@@ -44,6 +44,7 @@ class RegisterController extends Controller
             'jurusan' => 'required',
             'angkatan' => 'required',
             'level' => 'required',
+            'status' => 'required',
             'password' => 'required|min:5|max:255'
         ]);
         //cara keduia

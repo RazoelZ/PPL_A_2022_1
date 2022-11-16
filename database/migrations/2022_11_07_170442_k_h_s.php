@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('ipsemester');
             $table->float('ipkumulatif');
             $table->binary('scankhs');
+            $table->boolean('isverified')->default('0');
             $table->timestamps();
         });
     }

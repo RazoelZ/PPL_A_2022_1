@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tglsidang');
             $table->string('dosenpembimbing');
             $table->binary('scansidang');
+            $table->boolean('isverified')->default('0');
             $table->timestamps();
         });
     }

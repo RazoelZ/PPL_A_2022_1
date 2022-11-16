@@ -6,6 +6,10 @@ use App\Http\Controllers\IRSMahasiswaController;
 use App\Http\Controllers\KHSDosenController;
 use App\Http\Controllers\KHSMahasiswaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MhsAktifDepController;
+use App\Http\Controllers\MhsCutiDepController;
+use App\Http\Controllers\MhsDropoutDepController;
+use App\Http\Controllers\MhsMangkirDepController;
 use App\Http\Controllers\PKLDosenController;
 use App\Http\Controllers\PKLMahasiswaController;
 use App\Http\Controllers\RegisterController;
@@ -65,8 +69,10 @@ Route::put('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::
 Route::get('/dashboarddosen', function () {
     return view('dosen.homedosen');
 });
-
+//IRS
 Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index']);
+Route::get('/dashboarddosen/irs/verify/{id}', [IRSDosenController::class, 'changestatus']);
+
 Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index']);
 Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index']);
 Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index']);
@@ -83,19 +89,15 @@ Route::get('/dashboardadmin/edituser', function () {
     return view('admin.datairslengkap');
 });
 Route::get('/dashboardadmin/lihatuser', function () {
-    return view('welcome');
+    return view('admin.lihatuseradmin');
 });
 //departemen
 
 Route::get('/dashboarddepartment', function () {
     return view('department.homedepartement');
 });
-Route::get('/dashboarddepartment/mhsaktif', function () {
-    return view('department.mahasiswaaktif');
-});
-Route::get('/dashboarddepartment/mhsdo', function () {
-    return view('department.mahasiswado');
-});
-Route::get('/dashboarddepartment/mhsmangkir', function () {
-    return view('department.mahasiswamangkir');
-});
+
+Route::get('/dashboarddepartment/mhsaktif', [MhsAktifDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhsdo', [MhsDropoutDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhsmangkir', [MhsMangkirDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhscuti', [MhsCutiDepController::class, 'index']);

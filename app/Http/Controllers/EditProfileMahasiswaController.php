@@ -14,7 +14,9 @@ class EditProfileMahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.profile');
+        return view('mahasiswa.profile', [
+            'title' => 'Profile Mahasiswa'
+        ]);
     }
 
     /**

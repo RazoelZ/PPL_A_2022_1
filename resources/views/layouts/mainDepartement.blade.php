@@ -68,8 +68,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data</h6>
                         <a class="collapse-item" href="/dashboarddepartment/mhsaktif">Mahasiswa Aktif</a>
-                        <a class="collapse-item" href="/dashboarddepartment/mhsdo">Mahasiswa DO</a>
+                        <a class="collapse-item" href="/dashboarddepartment/mhsmangkir">Mahasiswa Cuti</a>
                         <a class="collapse-item" href="/dashboarddepartment/mhsmangkir">Mahasiswa Mangkir</a>
+                        <a class="collapse-item" href="/dashboarddepartment/mhscuti">Mahasiswa DO</a>
                     </div>
                 </div>
             </li>

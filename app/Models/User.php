@@ -26,7 +26,8 @@ class User extends Authenticatable
         'angkatan',
         'alamat',
         'nomortlp',
-        'level'
+        'level',
+        'status'
     ];
 
     /**

@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dataaktif as $item)
+                    @foreach ($datacuti as $item)
                         <tr>
                             <td>{{ $item['id'] }}</td>
                             <td>{{ $item['name'] }}</td>

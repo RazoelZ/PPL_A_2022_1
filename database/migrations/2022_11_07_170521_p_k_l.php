@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('instansi');
             $table->string('dosenpengampu');
             $table->string('scanpkl');
+            $table->boolean('isverified')->default('0');
             $table->timestamps();
         });
     }
