@@ -25,7 +25,7 @@ class IRSMahasiswaController extends Controller
     {
         $validatedata = $request->validate([
             'semester' => 'required',
-            'jmlsks' => 'required',
+            'jmlsks' => 'required|lte:25',
             'scansks' => 'required'
         ]);
 

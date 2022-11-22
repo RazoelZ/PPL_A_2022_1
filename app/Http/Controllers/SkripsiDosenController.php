@@ -12,4 +12,23 @@ class SkripsiDosenController extends Controller
         $dataskripsi = Skripsi::all();
         return view('dosen.skripsidosen', compact('dataskripsi'));
     }
+    public function changestatus(Request $request)
+    {
+        $dataskripsi = Skripsi::find($request->id);
+
+        $dataskripsi->isverified = $request->isverified;
+        // dd($request);
+        $dataskripsi->update(['isverified' => 1]);
+        return redirect('/dashboarddosen/pkl');
+    }
+
+    public function unchangestatus(Request $request)
+    {
+        $dataskripsi = Skripsi::find($request->id);
+
+        $dataskripsi->isverified = $request->isverified;
+        // dd($request);
+        $dataskripsi->update(['isverified' => 0]);
+        return redirect('/dashboarddosen/pkl');
+    }
 }

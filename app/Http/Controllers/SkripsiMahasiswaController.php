@@ -21,8 +21,8 @@ class SkripsiMahasiswaController extends Controller
     {
         $validatedata = $request->validate([
             'semester' => 'required',
-            'tglsidang' => 'required',
-            'dosenpembimbing' => 'required',
+            'tglsidang' => 'required|date',
+            'dosenpembimbing' => 'required|string',
             'scansidang' => 'required'
         ]);
         $validatedata['userid'] = auth()->user()->id;

@@ -13,7 +13,8 @@ class PKL extends Model
         'userid',
         'instansi',
         'dosenpengampu',
-        'scanpkl'
+        'scanpkl',
+        'isverified'
     ];
 
     public function User()

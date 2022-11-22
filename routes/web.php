@@ -72,10 +72,20 @@ Route::get('/dashboarddosen', function () {
 //IRS
 Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index']);
 Route::get('/dashboarddosen/irs/verify/{id}', [IRSDosenController::class, 'changestatus']);
-
+Route::get('/dashboarddosen/irs/unverify/{id}', [IRSDosenController::class, 'unchangestatus']);
+//KHS
 Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index']);
+Route::get('/dashboarddosen/khs/verify/{id}', [KHSDosenController::class, 'changestatus']);
+Route::get('/dashboarddosen/khs/unverify/{id}', [KHSDosenController::class, 'unchangestatus']);
+//PKL
 Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index']);
+Route::get('/dashboarddosen/pkl/verify/{id}', [PKLDosenController::class, 'changestatus']);
+Route::get('/dashboarddosen/pkl/unverify/{id}', [PKLDosenController::class, 'unchangestatus']);
+
+//SKRIPSI
 Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index']);
+Route::get('/dashboarddosen/skripsi/verify/{id}', [SkripsiDosenController::class, 'changestatus']);
+Route::get('/dashboarddosen/skripsi/unverify/{id}', [SkripsiDosenController::class, 'unchangestatus']);
 
 //Admin
 
@@ -98,6 +108,15 @@ Route::get('/dashboarddepartment', function () {
 });
 
 Route::get('/dashboarddepartment/mhsaktif', [MhsAktifDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhsaktif/detail/{id}', [MhsAktifDepController::class, 'detail']);
+
 Route::get('/dashboarddepartment/mhsdo', [MhsDropoutDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhsdo/detail/{id}', [MhsDropoutDepController::class, 'detail']);
+
+
 Route::get('/dashboarddepartment/mhsmangkir', [MhsMangkirDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhsmangkir/detail/{id}', [MhsMangkirDepController::class, 'detail']);
+
+
 Route::get('/dashboarddepartment/mhscuti', [MhsCutiDepController::class, 'index']);
+Route::get('/dashboarddepartment/mhscuti/detail/{id}', [MhsCutiDepController::class, 'detail']);

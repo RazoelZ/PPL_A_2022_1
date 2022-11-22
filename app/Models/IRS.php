@@ -14,6 +14,7 @@ class IRS extends Model
         'semester',
         'jmlsks',
         'scansks',
+        'isverified'
     ];
 
     public function User()

@@ -18,10 +18,10 @@ class KHSMahasiswaController extends Controller
 
         $validatedata = $request->validate([
             'semester' => 'required',
-            'skssemester' => 'required',
-            'skskumulatif' => 'required',
-            'ipsemester' => 'required',
-            'ipkumulatif' => 'required',
+            'skssemester' => 'required|integer|lte:25',
+            'skskumulatif' => 'required|integer|lte:150',
+            'ipsemester' => 'required|regex:/^\d+(\.\d{1,2})?$/|lte:4',
+            'ipkumulatif' => 'required|regex:/^\d+(\.\d{1,2})?$/|lte:4',
             'scankhs' => 'required'
         ]);
 

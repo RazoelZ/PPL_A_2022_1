@@ -16,9 +16,20 @@ class IRSDosenController extends Controller
     public function changestatus(Request $request)
     {
         $datairs = IRS::find($request->id);
-        dd($request);
+
         $datairs->isverified = $request->isverified;
-        $datairs->update(['isverified', 1]);
-        return redirect()->route('dosen.irsdosen');
+        // dd($request);
+        $datairs->update(['isverified' => 1]);
+        return redirect('/dashboarddosen/irs');
+    }
+
+    public function unchangestatus(Request $request)
+    {
+        $datairs = IRS::find($request->id);
+
+        $datairs->isverified = $request->isverified;
+        // dd($request);
+        $datairs->update(['isverified' => 0]);
+        return redirect('/dashboarddosen/irs');
     }
 }

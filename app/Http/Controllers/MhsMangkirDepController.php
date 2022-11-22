@@ -11,7 +11,13 @@ class MhsMangkirDepController extends Controller
     {
         $datamangkir = User::query()
             ->where('status', '=', 'Mangkir')
+            ->where('level', '=', 'user')
             ->get();
         return view('department.mahasiswamangkir', compact('datamangkir'));
+    }
+    function detail($id)
+    {
+        $dataaktif = User::find($id);
+        return view('department.MahasiswaDetail', compact('dataaktif'));
     }
 }

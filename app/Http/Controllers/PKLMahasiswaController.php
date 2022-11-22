@@ -21,8 +21,8 @@ class PKLMahasiswaController extends Controller
     { {
             $validatedata = $request->validate([
                 'semester' => 'required',
-                'instansi' => 'required',
-                'dosenpengampu' => 'required',
+                'instansi' => 'required|string',
+                'dosenpengampu' => 'required|string',
                 'scanpkl' => 'required'
             ]);
 

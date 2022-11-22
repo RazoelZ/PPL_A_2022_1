@@ -20,7 +20,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">nama</th>
                         <th scope="col">Semester</th>
                         <th scope="col">Jumlah SKS</th>
@@ -38,17 +38,36 @@
                         // dd($user);
                         ?>
                         <tr>
-                            <td>{{ $item['id'] }}</td>
                             <td>{{ $user[0]['name'] }}</td>
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['jmlsks'] }}</td>
                             <td>{{ $item['scansks'] }}</td>
-                            <td><a href="/dashboarddosen/irs/verify/{{ $item['id'] }}">Setujui</a></td>
+                            <td>
+                                @if ($item->isverified == 1)
+                                    <a href="/dashboarddosen/irs/unverify/{{ $item['id'] }}"
+                                        class="btn btn-danger">Batal</a>
+                                @else
+                                    <a href="/dashboarddosen/irs/verify/{{ $item['id'] }}"
+                                        class="btn btn-success">Setujui</a>
+                                @endif
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
     </body>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
 @endsection

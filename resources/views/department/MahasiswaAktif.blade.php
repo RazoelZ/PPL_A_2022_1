@@ -22,17 +22,27 @@
                 <tbody>
                     @foreach ($dataaktif as $item)
                         <tr>
-                            <td>{{ $item['id'] }}</td>
                             <td>{{ $item['name'] }}</td>
                             <td>{{ $item['nim'] }}</td>
                             <td>{{ $item['jurusan'] }}</td>
                             <td>{{ $item['angkatan'] }}</td>
-                            <td><button class="btn btn-primary">detail</button></td>
+                            <td><a href="/dashboarddepartment/mhsaktif/detail/{{ $item['id'] }}"
+                                    class="btn btn-info">Details</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
     <!-- /.container-fluid -->
 @endsection

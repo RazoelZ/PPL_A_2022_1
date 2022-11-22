@@ -33,9 +33,9 @@ class EditProfileMahasiswaController extends Controller
             'email' => 'required|email:dns|',
             'nim' => 'required|integer',
             'jurusan' => 'required|string',
-            'angkatan' => 'required|integer',
+            'angkatan' => 'required|integer|digits:4',
             'alamat' => 'required|string',
-            'nomortlp' => 'required'
+            'nomortlp' => 'required|digits_between:8,12:'
         ]);
         //('angkatan', $id)->get();
         $validatedata['id'] = auth()->user()->id;

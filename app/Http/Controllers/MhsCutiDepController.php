@@ -11,7 +11,13 @@ class MhsCutiDepController extends Controller
     {
         $datacuti = User::query()
             ->where('status', '=', 'Cuti')
+            ->where('level', '=', 'user')
             ->get();
         return view('department.mahasiswacuti', compact('datacuti'));
+    }
+    function detail($id)
+    {
+        $dataaktif = User::find($id);
+        return view('department.MahasiswaDetail', compact('dataaktif'));
     }
 }

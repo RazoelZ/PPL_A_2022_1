@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Departemen</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -68,9 +68,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data</h6>
                         <a class="collapse-item" href="/dashboarddepartment/mhsaktif">Mahasiswa Aktif</a>
-                        <a class="collapse-item" href="/dashboarddepartment/mhsmangkir">Mahasiswa Cuti</a>
+                        <a class="collapse-item" href="/dashboarddepartment/mhscuti">Mahasiswa Cuti</a>
                         <a class="collapse-item" href="/dashboarddepartment/mhsmangkir">Mahasiswa Mangkir</a>
-                        <a class="collapse-item" href="/dashboarddepartment/mhscuti">Mahasiswa DO</a>
+                        <a class="collapse-item" href="/dashboarddepartment/mhsdo">Mahasiswa DO</a>
                     </div>
                 </div>
             </li>
@@ -145,7 +145,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('assets/img/undraw_profile.svg') }}">
                             </a>

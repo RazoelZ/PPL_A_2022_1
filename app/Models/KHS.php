@@ -16,7 +16,8 @@ class KHS extends Model
         'skskumulatif',
         'ipsemester',
         'ipkumulatif',
-        'scankhs'
+        'scankhs',
+        'isverified'
     ];
 
     public function User()

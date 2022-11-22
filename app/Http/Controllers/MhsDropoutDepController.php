@@ -11,7 +11,13 @@ class MhsDropoutDepController extends Controller
     {
         $dataDO = User::query()
             ->where('status', '=', 'Dropout')
+            ->where('level', '=', 'user')
             ->get();
         return view('department.mahasiswado', compact('dataDO'));
+    }
+    function detail($id)
+    {
+        $dataaktif = User::find($id);
+        return view('department.MahasiswaDetail', compact('dataaktif'));
     }
 }
