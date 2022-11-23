@@ -98,13 +98,19 @@ Route::get('/dashboardadmin', function () {
 //     return view('admin.register');
 // });
 Route::get('/dashboardadmin/viewuser', [UserAdminController::class, 'index']);
+Route::get('/dashboardadmin/viewuser/{id}', [UserAdminController::class, 'editberkas']);
+
+
+Route::get('/dashboardadmin/viewuser/delete/{id}', [UserAdminController::class, 'destroy']);
+
+
 
 Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index']);
 Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update']);
 
-Route::get('/dashboardadmin/lihatuser', function () {
-    return view('admin.lihatuseradmin');
-});
+
+Route::get('/dashboardadmin/lihatuser', [UserAdminController::class, 'showuser']);
+
 //departemen
 
 Route::get('/dashboarddepartment', function () {

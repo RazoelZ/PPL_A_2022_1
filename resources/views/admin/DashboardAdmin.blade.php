@@ -10,8 +10,8 @@
                     </div>
                     <div class="col-9" style="margin-top: 15px;">
                         <br>
-                        <div><b>Beni Nugroho</b><br></div>
-                        <div>Fakultas Sains dan Informatika<br></div>
+                        <div><b>{{ auth()->user()->name }}</b><br></div>
+                        <div>{{ auth()->user()->jurusan }}<br></div>
                         <div>Universitas Diponegoro<br></div>
                         </ul>
                         <br><br>

@@ -17,9 +17,15 @@
             </div>
             <br>
             <table class="table table-striped">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">No</th>
+                        <th scope="col">NIM</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Angkatan</th>
                         <th scope="col">Action</th>
@@ -27,21 +33,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    foreach ($mahasiswa as $m) :
-                    ?>
-                    <tr>
-                        <td><?= $m->id ?></td>
-                        <td><?= $m->name ?></td>
-                        <td><?= $m->angkatan ?></td>
-                        <td><a href="/dashboardadmin/edituser" class="text-center">Edit</a></td>
-                        <td><a href="#" class="text-center" style="color: #FF0000">Delete</a></td>
-                    </tr>
-                    <?php
-                    endforeach;
-                    ?>
+                    @foreach ($mahasiswa as $item)
+                        <tr>
+                            <td>{{ $item['nim'] }}</td>
+                            <td>{{ $item['name'] }}</td>
+                            <td>{{ $item['angkatan'] }}</td>
+                            <td><a href="/dashboardadmin/viewuser/{{ $item['id'] }}" class="btn btn-warning">Edit</a></td>
+                            <td><a href="/dashboardadmin/viewuser/delete/{{ $item['id'] }}"
+                                    class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
 @endsection

@@ -3,27 +3,20 @@
 @section('container')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar User Sistem Informasi</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Berkas Mahasiswa</h6>
         </div>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">NIM/NIP</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Level</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">IRS</th>
+                    <th scope="col">KHS</th>
+                    <th scope="col">PKL</th>
+                    <th scope="col">Skripsi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($datauser as $item)
-                    <tr>
-                        <td>{{ $item['name'] }}</td>
-                        <td>{{ $item['nim'] }}</td>
-                        <td>{{ $item['status'] }}</td>
-                        <td>{{ $item['level'] }}</td>
-                    </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
