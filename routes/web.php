@@ -15,6 +15,8 @@ use App\Http\Controllers\PKLMahasiswaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SkripsiDosenController;
 use App\Http\Controllers\SkripsiMahasiswaController;
+use App\Http\Controllers\EditMhsAdminController;
+use App\Http\Controllers\UserAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,9 +87,11 @@ Route::get('/dashboardadmin', function () {
 // Route::get('/dashboardadmin/register', function () {
 //     return view('admin.register');
 // });
-Route::get('/dashboardadmin/edituser', function () {
-    return view('admin.datairslengkap');
-});
+Route::get('/dashboardadmin/viewuser', [UserAdminController::class, 'index']);
+
+Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index']);
+Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update']);
+
 Route::get('/dashboardadmin/lihatuser', function () {
     return view('admin.lihatuseradmin');
 });

@@ -66,7 +66,7 @@
 
                         </h6>
                         <a class="collapse-item" href="/dashboardadmin/register">Register User</a>
-                        <a class="collapse-item" href="/dashboardadmin/edituser">Edit Berkas</a>
+                        <a class="collapse-item" href="/dashboardadmin/viewuser">Edit Berkas</a>
                         <a class="collapse-item" href="/dashboardadmin/lihatuser">Lihat User</a>
                     </div>
                 </div>

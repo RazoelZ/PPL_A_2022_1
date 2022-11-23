@@ -89,10 +89,10 @@
                 @enderror"
                     name="level" id="level" required>
                     <option selected disabled>level</option>
-                    <option value="user">User</option>
+                    <option value="user">Mahasiswa</option>
                     <option value="dosen">Dosen</option>
                     <option value="admin">Admin</option>
-                    <option value="department">department</option>
+                    <option value="department">Departemen</option>
                 </select>
                 @error('level')
                     <div class="invalid-feedback">
@@ -111,7 +111,7 @@
                         <option value="Mangkir">Mangkir</option>
                         <option value="Cuti">Cuti</option>
                         <option value="Dropout">Dropout</option>
-                        <option value="operator">operator</option>
+                        <option value="operator">Operator</option>
                     </select>
                     @error('status')
                         <div class="invalid-feedback">
