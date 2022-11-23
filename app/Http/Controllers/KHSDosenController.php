@@ -12,4 +12,24 @@ class KHSDosenController extends Controller
         $datakhs = KHS::all();
         return view('dosen.khsdosen', compact('datakhs'));
     }
+
+    public function changestatus(Request $request)
+    {
+        $datakhs = KHS::find($request->id);
+
+        $datakhs->isverified = $request->isverified;
+        // dd($request);
+        $datakhs->update(['isverified' => 1]);
+        return redirect('/dashboarddosen/khs');
+    }
+
+    public function unchangestatus(Request $request)
+    {
+        $datakhs = KHS::find($request->id);
+
+        $datakhs->isverified = $request->isverified;
+        // dd($request);
+        $datakhs->update(['isverified' => 0]);
+        return redirect('/dashboarddosen/khs');
+    }
 }

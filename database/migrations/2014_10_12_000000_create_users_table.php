@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('jurusan')->nullable();
             $table->integer('angkatan')->nullable();
             $table->string('alamat')->nullable();
-            $table->integer('nomortlp')->nullable();
+            $table->bigInteger('nomortlp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

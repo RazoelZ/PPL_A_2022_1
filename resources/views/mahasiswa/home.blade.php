@@ -9,24 +9,11 @@
     </div>
 
     <!-- Content Row -->
-    <div class="card">
-        <h5 class="card-header">Selamat Datang {{ auth()->user()->name }}</h5>
-        <div class="card-body">
-            <h1 class="card-title">{{ auth()->user()->name }}</h1>
-            <h3 class="card-text">NIM</h3>
-            <h5 class="card-text">{{ auth()->user()->nim }}</h5>
-            <h3 class="card-text">Jurusan</h3>
-            <h5 class="card-text">{{ auth()->user()->jurusan }}</h5>
-            <h3 class="card-text">Angkatan</h3>
-            <h5 class="card-text">{{ auth()->user()->angkatan }}</h5>
-        </div>
-    </div>
-    <br>
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-h5">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-h5">
@@ -100,6 +87,20 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <h5 class="card-header">Selamat Datang {{ auth()->user()->name }}</h5>
+        <div class="card-body">
+            <h1 class="card-title">{{ auth()->user()->name }}</h1>
+            <h3 class="card-text">NIM</h3>
+            <h5 class="card-text">{{ auth()->user()->nim }}</h5>
+            <h3 class="card-text">Jurusan</h3>
+            <h5 class="card-text">{{ auth()->user()->jurusan }}</h5>
+            <h3 class="card-text">Angkatan</h3>
+            <h5 class="card-text">{{ auth()->user()->angkatan }}</h5>
+        </div>
+    </div>
+    <br>
+
 
     <!-- Content Row -->
 

@@ -20,7 +20,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Semester</th>
                         <th scope="col">SKS Semester</th>
@@ -41,7 +41,6 @@
                         // dd($user);
                         ?>
                         <tr>
-                            <td>{{ $item['id'] }}</td>
                             <td>{{ $user[0]['name'] }}</td>
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['skssemester'] }}</td>
@@ -49,11 +48,29 @@
                             <td>{{ $item['ipsemester'] }}</td>
                             <td>{{ $item['ipkumulatif'] }}</td>
                             <td>{{ $item['scankhs'] }}</td>
-                            <td><button type="button" class="btn btn-success">Setujui</button></td>
+                            <td>
+                                @if ($item->isverified == 1)
+                                    <a href="/dashboarddosen/khs/unverify/{{ $item['id'] }}"
+                                        class="btn btn-danger">Batal</a>
+                                @else
+                                    <a href="/dashboarddosen/khs/verify/{{ $item['id'] }}"
+                                        class="btn btn-success">Setujui</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
 @endsection

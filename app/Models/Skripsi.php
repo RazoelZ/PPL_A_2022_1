@@ -12,7 +12,8 @@ class Skripsi extends Model
         'semester',
         'tglsidang',
         'dosenpembimbing',
-        'scansidang'
+        'scansidang',
+        'isverified'
     ];
 
     public function User()
