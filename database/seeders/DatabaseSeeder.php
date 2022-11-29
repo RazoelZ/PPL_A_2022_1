@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'nim' => '247474754',
             'jurusan' => 'Sains Dan Matematika',
             'angkatan' => '1989',
-            'level' => 'departement',
+            'level' => 'department',
             'status' => 'Aktif'
         ]);
 

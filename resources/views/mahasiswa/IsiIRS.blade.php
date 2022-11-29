@@ -13,7 +13,7 @@
             </div>
         @endif
         <div class="card-body">
-            <form class="user" method="POST" action="/dashboardmahasiswa/IsiIRSMahasiswa">
+            <form class="user" method="POST" action="/dashboardmahasiswa/IsiIRSMahasiswa" enctype="multipart/form-data">
                 @csrf
                 <label for="semester">Semester Aktif</label>
                 <div class="form-group">
@@ -70,10 +70,6 @@
                             </div>
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <input type="userid" class="form-control" id="userid" placeholder="userid"
-                            value="{{ auth()->user()->id }}" hidden>
-                    </div> --}}
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                         Submit
                     </button>

@@ -1,114 +1,170 @@
 @extends('layouts.adminmain')
 
 @section('container')
-    <div class="container bg-white">
-        <div class="row">
-            <div class="col-6" style="margin-top: 50px;">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="img-profile rounded-circle" src="{{ asset('assets/img/undraw_profile.svg') }}">
-                    </div>
-                    <div class="col-9" style="margin-top: 15px;">
-                        <br>
-                        <div><b>{{ auth()->user()->name }}</b><br></div>
-                        <div>{{ auth()->user()->jurusan }}<br></div>
-                        <div>Universitas Diponegoro<br></div>
-                        </ul>
-                        <br><br>
+    <div class="row">
+        <div class="col-2">
+            <img class="img-profile rounded-circle" src="{{ asset('assets/img/undraw_profile.svg') }}">
+        </div>
+        <div class="col-9" style="margin-top: 15px;">
+            <br>
+            <h3>{{ auth()->user()->name }}</h3>
+            <h3>{{ auth()->user()->jurusan }}</h3>
+            <h3>Universitas Diponegoro</h3>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <h2 class="card-header h3 mb-0 text-gray-800">Selamat Datang {{ auth()->user()->name }}</h2>
+
+        <div class="row pt-3 px-3">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-h5">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    User Aktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $useractivecount }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <form method="POST" class="ms-3" autocomplete="on" action="">
-                    <div class="mb-3 row mt-4">
-                        <label for="admin" class="col-sm-3 col-form-label">Update Status</label>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="admin" class="col-sm-3 col-form-label">Status</label>
-                        <div class="col-sm-7">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Aktif</option>
-                                <option value="1">Cuti</option>
-                                <option value="2">Mangkir</option>
-                                <option value="3">Drop Out</option>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary">Update</button>
-                    </div>
-                </form>
             </div>
-            <div class="col-6 text-white" style="margin-top: 30px;">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card mb-4 " style="width:15rem; height:14rem;background-color:#0E3B81;">
-                            <h5 class="card-title text-center mt-3">IRS</h5>
-                            <div class="card-body text-center mt-4">
-                                <div class="card-text">
-                                    <div>Sudah Mengisi :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Belum Mengisi :
-                                        <!-- <.?php KONEK DATABASE ?> -->
-                                    </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    User Mahasiswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mahasiswa }}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card" style="width:15rem; height:14rem;background-color:#972126;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">KHS</h5>
-                                <br>
-                                <div class="card-text text-center mt-3">
-                                    <div>Sudah Mengisi :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Belum Mengisi :
-                                        <!-- <.?php KONEK DATABASE ?> -->
-                                    </div>
-                                </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="card" style="width:15rem; height:14rem;background-color:#C98400;">
-                            <h5 class="card-title text-center mt-3">IRS</h5>
-                            <div class="card-body text-center mt-2">
-                                <div class="card-text">
-                                    <div>Sedang Berjalan :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Belum Berjalan :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Lulus :
-                                        <!-- <.?php KONEK DATABASE ?> -->
-                                    </div>
-                                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">User Dosen</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dosen }}</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="card" style="width:15rem; height:14rem;background-color:#2F6146;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Skripsi</h5>
-                                <br>
-                                <div class="card-text text-center">
-                                    <div>Sedang Berjalan :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Belum Berjalan :
-                                        <!-- <.?php KONEK DATABASE ?> --><br><br>
-                                    </div>
-                                    <div>Lulus :
-                                        <!-- <.?php KONEK DATABASE ?> -->
-                                    </div>
-                                </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    User Departement</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $department }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    @endsection
+        <div class="row pt-3 px-3">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-dark shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-h5">
+                                <div class="text-xs font-weight-bold text-border-left-dark text-uppercase mb-1">
+                                    User Admin</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $admin }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    User Mahasiswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mahasiswa }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">User Dosen</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dosen }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    User Departement</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $department }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

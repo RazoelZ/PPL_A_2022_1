@@ -23,6 +23,8 @@ class IRSMahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->file('scansks')->store('post-scansks');
+
         $validatedata = $request->validate([
             'semester' => 'required',
             'jmlsks' => 'required|lte:25',

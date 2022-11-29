@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardDepartmentController;
+use App\Http\Controllers\DashboardDosenController;
+use App\Http\Controllers\DashboardMhsController;
 use App\Http\Controllers\EditProfileMahasiswaController;
 use App\Http\Controllers\IRSDosenController;
 use App\Http\Controllers\IRSMahasiswaController;
@@ -30,103 +34,82 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login.login');
-});
+// Route::get('/', function () {
+//     return view('login.login');
+// });
 
+//Credentials
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/dashboardadmin/register', [RegisterController::class, 'index']);
-Route::post('/dashboardadmin/register', [RegisterController::class, 'store']);
-
 //Mahasiswa
-Route::get('/dashboardmahasiswa', function () {
-    return view('mahasiswa.home');
-});
-
+Route::get('/dashboardmahasiswa', [DashboardMhsController::class, 'index'])->middleware('mhs');
 //ISI IRS
-Route::post('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'store']);
-Route::get('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'index']);
-
+Route::post('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'store'])->middleware('mhs');
+Route::get('/dashboardmahasiswa/IsiIRSMahasiswa', [IRSMahasiswaController::class, 'index'])->middleware('mhs');
 //ISI KHS
-Route::get('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'index']);
-Route::post('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'store']);
-
+Route::get('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'index'])->middleware('mhs');
+Route::post('/dashboardmahasiswa/IsiKHSMahasiswa', [KHSMahasiswaController::class, 'store'])->middleware('mhs');
 //ISI PKL
-Route::get('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'index']);
-Route::post('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'store']);
-
+Route::get('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'index'])->middleware('mhs');
+Route::post('/dashboardmahasiswa/IsiPKLMahasiswa', [PKLMahasiswaController::class, 'store'])->middleware('mhs');
 //ISI SKRIPSI
-Route::get('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'index']);
-Route::post('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'store']);
-
+Route::get('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'index'])->middleware('mhs');
+Route::post('/dashboardmahasiswa/IsiSkripsiMahasiswa', [SkripsiMahasiswaController::class, 'store'])->middleware('mhs');
 //edit
-Route::get('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'index']);
-Route::put('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'update']);
+Route::get('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'index'])->middleware('mhs');
+Route::put('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::class, 'update'])->middleware('mhs');
 
 //Dosen
-Route::get('/dashboarddosen', function () {
-    return view('dosen.homedosen');
-});
-//IRS
-Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index']);
-Route::get('/dashboarddosen/irs/verify/{id}', [IRSDosenController::class, 'changestatus']);
-Route::get('/dashboarddosen/irs/unverify/{id}', [IRSDosenController::class, 'unchangestatus']);
+Route::get('/dashboarddosen', [DashboardDosenController::class, 'index'])->middleware('dosen');
+
+Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/irs/verify/{id}', [IRSDosenController::class, 'changestatus'])->middleware('dosen');
+Route::get('/dashboarddosen/irs/unverify/{id}', [IRSDosenController::class, 'unchangestatus'])->middleware('dosen');
 //KHS
-Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index']);
-Route::get('/dashboarddosen/khs/verify/{id}', [KHSDosenController::class, 'changestatus']);
-Route::get('/dashboarddosen/khs/unverify/{id}', [KHSDosenController::class, 'unchangestatus']);
+Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/khs/verify/{id}', [KHSDosenController::class, 'changestatus'])->middleware('dosen');
+Route::get('/dashboarddosen/khs/unverify/{id}', [KHSDosenController::class, 'unchangestatus'])->middleware('dosen');
 //PKL
-Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index']);
-Route::get('/dashboarddosen/pkl/verify/{id}', [PKLDosenController::class, 'changestatus']);
-Route::get('/dashboarddosen/pkl/unverify/{id}', [PKLDosenController::class, 'unchangestatus']);
+Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/pkl/verify/{id}', [PKLDosenController::class, 'changestatus'])->middleware('dosen');
+Route::get('/dashboarddosen/pkl/unverify/{id}', [PKLDosenController::class, 'unchangestatus'])->middleware('dosen');
 
 //SKRIPSI
-Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index']);
-Route::get('/dashboarddosen/skripsi/verify/{id}', [SkripsiDosenController::class, 'changestatus']);
-Route::get('/dashboarddosen/skripsi/unverify/{id}', [SkripsiDosenController::class, 'unchangestatus']);
+Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/skripsi/verify/{id}', [SkripsiDosenController::class, 'changestatus'])->middleware('dosen');
+Route::get('/dashboarddosen/skripsi/unverify/{id}', [SkripsiDosenController::class, 'unchangestatus'])->middleware('dosen');
 
 //Admin
+Route::get('/dashboardadmin', [DashboardAdminController::class, 'index'])->middleware('admin');
 
-Route::get('/dashboardadmin', function () {
-    return view('admin.dashboardadmin');
-});
-// Route::get('/dashboardadmin/register', function () {
-//     return view('admin.register');
-// });
-Route::get('/dashboardadmin/viewuser', [UserAdminController::class, 'index']);
-Route::get('/dashboardadmin/viewuser/{id}', [UserAdminController::class, 'editberkas']);
-
-
-Route::get('/dashboardadmin/viewuser/delete/{id}', [UserAdminController::class, 'destroy']);
-
-
-
-Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index']);
-Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update']);
-
-
-Route::get('/dashboardadmin/lihatuser', [UserAdminController::class, 'showuser']);
+//viewuser
+Route::get('/dashboardadmin/viewuser', [UserAdminController::class, 'index'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/{id}', [UserAdminController::class, 'editberkas'])->middleware('admin');
+//register user
+Route::get('/dashboardadmin/register', [RegisterController::class, 'index'])->middleware('admin');
+Route::post('/dashboardadmin/register', [RegisterController::class, 'store'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/delete/{id}', [UserAdminController::class, 'destroy'])->middleware('admin');
+//edituser
+Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index'])->middleware('admin');
+Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update'])->middleware('admin');
+//lihatuser
+Route::get('/dashboardadmin/lihatuser', [UserAdminController::class, 'showuser'])->middleware('admin');
 
 //departemen
 
-Route::get('/dashboarddepartment', function () {
-    return view('department.homedepartement');
-});
-
-Route::get('/dashboarddepartment/mhsaktif', [MhsAktifDepController::class, 'index']);
-Route::get('/dashboarddepartment/mhsaktif/detail/{id}', [MhsAktifDepController::class, 'detail']);
-
-Route::get('/dashboarddepartment/mhsdo', [MhsDropoutDepController::class, 'index']);
-Route::get('/dashboarddepartment/mhsdo/detail/{id}', [MhsDropoutDepController::class, 'detail']);
-
-
-Route::get('/dashboarddepartment/mhsmangkir', [MhsMangkirDepController::class, 'index']);
-Route::get('/dashboarddepartment/mhsmangkir/detail/{id}', [MhsMangkirDepController::class, 'detail']);
-
-
-Route::get('/dashboarddepartment/mhscuti', [MhsCutiDepController::class, 'index']);
-Route::get('/dashboarddepartment/mhscuti/detail/{id}', [MhsCutiDepController::class, 'detail']);
+Route::get('/dashboarddepartment', [DashboardDepartmentController::class, 'index'])->middleware('department');
+//Mahasiswa Aktif
+Route::get('/dashboarddepartment/mhsaktif', [MhsAktifDepController::class, 'index'])->middleware('department');
+Route::get('/dashboarddepartment/mhsaktif/detail/{id}', [MhsAktifDepController::class, 'detail'])->middleware('department');
+//Mahasiswa DropOut
+Route::get('/dashboarddepartment/mhsdo', [MhsDropoutDepController::class, 'index'])->middleware('department');
+Route::get('/dashboarddepartment/mhsdo/detail/{id}', [MhsDropoutDepController::class, 'detail'])->middleware('department');
+//Mahasiswa Mangkir
+Route::get('/dashboarddepartment/mhsmangkir', [MhsMangkirDepController::class, 'index'])->middleware('department');
+Route::get('/dashboarddepartment/mhsmangkir/detail/{id}', [MhsMangkirDepController::class, 'detail'])->middleware('department');
+//Mahasiswa Cuti
+Route::get('/dashboarddepartment/mhscuti', [MhsCutiDepController::class, 'index'])->middleware('department');
+Route::get('/dashboarddepartment/mhscuti/detail/{id}', [MhsCutiDepController::class, 'detail'])->middleware('department');
