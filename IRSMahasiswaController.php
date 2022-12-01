@@ -30,6 +30,7 @@ class IRSMahasiswaController extends Controller
         ]);
 
         $validatedata['userid'] = auth()->user()->id;
+        $request->file('scansks')->store('post-scansks');
         Irs::create($validatedata);
         return redirect('/dashboardmahasiswa/IsiIRSMahasiswa')->with('success', 'Data berhasil di masukkan');
     }

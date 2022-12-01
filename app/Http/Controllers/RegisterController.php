@@ -45,6 +45,7 @@ class RegisterController extends Controller
             'angkatan' => 'required',
             'level' => 'required',
             'status' => 'required',
+            'dosenwali',
             'password' => 'required|min:5|max:255'
         ]);
         //cara keduia
@@ -56,7 +57,7 @@ class RegisterController extends Controller
         //$request->session()->flash('success', 'Registrasi Berhasil, Silahkan login');
 
 
-        return redirect('/dashboardadmin/register')->with('success', 'Registrasi Berhasil, Silahkan login');
+        return redirect('/dashboardadmin/register')->with('success', 'Registrasi Berhasil');
     }
 
     /**

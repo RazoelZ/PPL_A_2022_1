@@ -19,7 +19,7 @@
         </div>
         <form class="user p-5" action="/dashboardadmin/register" method="POST">
             @csrf
-            <label for="name">Nama</label>
+            <label for="name">Nama<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <input type="text" name="name" class="form-control  @error('name') is-invalid @enderror"
                     id="name" placeholder="Your name" required value="{{ old('name') }}">
@@ -29,7 +29,7 @@
                     </div>
                 @enderror
             </div>
-            <label for="email">E-Mail</label>
+            <label for="email">E-Mail<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <input type="email" name="email" class="form-control    @error('email') is-invalid @enderror"
                     id="email" placeholder="Email Address" required value="{{ old('email') }}">
@@ -39,7 +39,7 @@
                     </div>
                 @enderror
             </div>
-            <label for="nim">NIM</label>
+            <label for="nim">NIM<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <input type="text"
                     class="form-control 
@@ -53,7 +53,7 @@
                     </div>
                 @enderror
             </div>
-            <label for="jurusan">Jurusan</label>
+            <label for="jurusan">Jurusan<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <input type="text"
                     class="form-control 
@@ -67,7 +67,7 @@
                     </div>
                 @enderror
             </div>
-            <label for="angkatan">Angkatan</label>
+            <label for="angkatan">Angkatan<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <input type="text"
                     class="form-control 
@@ -82,11 +82,26 @@
                     </div>
                 @enderror
             </div>
-            <label for="level">level Aktif</label>
+            <label for="dosenwali">Masukkan Dosen Wali Anda</label>
+            <div class="form-group">
+                <input type="text"
+                    class="form-control 
+                             @error('dosenwali')
+                        is-invalid    
+                        @enderror"
+                    id="dosenwali" name="dosenwali" placeholder="Masukkan dosenwali (jika user mahasiswa)" required
+                    value="{{ old('dosenwali') }}">
+                @error('dosenwali')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <label for="level">level Aktif<sup class="text-danger">*</sup></label>
             <div class="form-group">
                 <select class="form-control @error('level')
                 is-invalid    
-                @enderror"
+                @enderror mb-3"
                     name="level" id="level" required>
                     <option selected disabled>level</option>
                     <option value="user">Mahasiswa</option>
@@ -99,12 +114,12 @@
                         {{ $message }}
                     </div>
                 @enderror
-                <label for="status">Status</label>
+                <label for="status">Status<sup class="text-danger">*</sup></label>
                 <div class="form-group">
                     <select
                         class="form-control @error('status')
                     is-invalid    
-                    @enderror"
+                    @enderror mb-3"
                         name="status" id="status" required>
                         <option selected disabled>Status</option>
                         <option value="Aktif">Aktif</option>
@@ -118,7 +133,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="password">Password</label>
+                    <label for="password">Password<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="password" name="password"
                             class="form-control  @error('password') is-invalid @enderror"" id="password"

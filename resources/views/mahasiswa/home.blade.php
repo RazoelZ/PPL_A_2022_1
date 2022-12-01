@@ -22,7 +22,13 @@
                             <div class="col mr-h5">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     IRS</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Sudah Terisi</div>
+                                @foreach ($irs as $item)
+                                    @if ($item->isverified == 1)
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Sudah Disetujui</div>
+                                    @else
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Belom Disetujui</div>
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

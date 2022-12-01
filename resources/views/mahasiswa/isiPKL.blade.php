@@ -8,19 +8,24 @@
             <h6 class="m-0 font-weight-bold text-primary">Isi PKL Mahasiswa</h6>
         </div>
         <div class="card-body">
-            <form class="user" method="POST" action="/dashboardmahasiswa/IsiPKLMahasiswa">
+            <form class="user" method="POST" action="/dashboardmahasiswa/IsiPKLMahasiswa" enctype="multipart/form-data">
                 @csrf
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
-                <label for="semester">Semester Aktif</label>
+                @if (session()->has('gagal'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('gagal') }}
+                    </div>
+                @endif
+                <label for="semester">Semester Aktif<sup class="text-danger">*</sup></label>
                 <div class="form-group">
                     <select
                         class="custom-select @error('semester')
                     is-invalid    
-                    @enderror"
+                    @enderror mb-3"
                         name="semester" id="semester" required>
                         <option selected disabled>Semester</option>
                         <option value="1">Semester 1</option>
@@ -44,7 +49,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="instansi">Instansi</label>
+                    <label for="instansi">Instansi<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="text"
                             class="form-control  @error('instansi')
@@ -57,7 +62,7 @@
                             </div>
                         @enderror
                     </div>
-                    <label for="dosenpengampu">Dosen Pengampu</label>
+                    <label for="dosenpengampu">Dosen Pengampu<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="text"
                             class="form-control  @error('dosenpengampu')
@@ -71,7 +76,7 @@
                             </div>
                         @enderror
                     </div>
-                    <label for="scanpkl">Scan PKL</label>
+                    <label for="scanpkl">Scan PKL<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="file"
                             class="form-control  @error('scanpkl')
@@ -90,7 +95,36 @@
             </form>
         </div>
     </div>
+    <div class="px-3">
+        <table class="table table-striped">
+            <thead>
+                @foreach ($data as $item)
+                    <tr>
+                        <th scope="col">Semester</th>
+                        <th scope="col">{{ $item['semester'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Jumlah SKS</th>
+                        <th scope="col">{{ $item['instansi'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Dosen Pengampu</th>
+                        <th scope="col">{{ $item['dosenpengampu'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Scan PKL</th>
+                        <th scope="col">{{ $item['scanpkl'] }}</th>
+                    </tr>
+                @endforeach
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
 
     </div>
+    </div>
+
     <!-- /.container-fluid -->
 @endsection

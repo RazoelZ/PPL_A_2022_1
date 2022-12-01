@@ -12,15 +12,20 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session()->has('gagal'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('gagal') }}
+            </div>
+        @endif
         <div class="card-body">
             <form class="user" method="POST" action="/dashboardmahasiswa/IsiIRSMahasiswa" enctype="multipart/form-data">
                 @csrf
-                <label for="semester">Semester Aktif</label>
+                <label for="semester">Semester Aktif<sup class="text-danger">*</sup></label>
                 <div class="form-group">
                     <select
                         class="custom-select @error('semester')
                     is-invalid    
-                    @enderror"
+                    @enderror mb-2"
                         name="semester" id="semester" required>
                         <option selected disabled>Semester</option>
                         <option value="1">Semester 1</option>
@@ -44,7 +49,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="jmlsks">Jumlah SKS</label>
+                    <label for="jmlsks">Jumlah SKS<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="text"
                             class="form-control  @error('jmlsks')
@@ -57,13 +62,13 @@
                             </div>
                         @enderror
                     </div>
-                    <label for="scansks">Scan SKS</label>
+                    <label for="scansks">Scan SKS<sup class="text-danger">*</sup></label>
                     <div class="form-group">
                         <input type="file"
                             class="form-control  @error('scansks')
                         is-invalid    
                         @enderror"
-                            id="scansks" name="scansks" placeholder="Scan SKS" required value="{{ old('scansks') }}">
+                            id="scansks" name="scansks" placeholder="Scan SKS" required>
                         @error('scansks')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -76,7 +81,30 @@
             </form>
         </div>
     </div>
+    <div class="px-3">
+        <table class="table table-striped p-5">
+            <thead>
+                @foreach ($data as $item)
+                    <tr>
+                        <th scope="col">Semester</th>
+                        <th scope="col">{{ $item['semester'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Jumlah SKS</th>
+                        <th scope="col">{{ $item['jmlsks'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Scan SKS</th>
+                        <th scope="col">{{ $item['scansks'] }}</th>
+                    </tr>
+                @endforeach
+            </thead>
+            <tbody>
 
+            </tbody>
+        </table>
+    </div>
+    </div>
     </div>
     <!-- /.container-fluid -->
 @endsection

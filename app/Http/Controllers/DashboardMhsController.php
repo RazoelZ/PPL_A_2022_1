@@ -12,10 +12,18 @@ class DashboardMhsController extends Controller
 {
     public function index()
     {
-        $irs = IRS::all();
-        $khs = KHS::all();
-        $pkl = PKL::all();
-        $skripsi = Skripsi::all();
+        $irs = IRS::query()
+            ->where('userid', '=', auth()->user()->id)
+            ->get();
+        $khs = KHS::query()
+            ->where('userid', '=', auth()->user()->id)
+            ->get();
+        $pkl = PKL::query()
+            ->where('userid', '=', auth()->user()->id)
+            ->get();
+        $skripsi = Skripsi::query()
+            ->where('userid', '=', auth()->user()->id)
+            ->get();;
 
         return view('mahasiswa.home', compact('irs', 'khs', 'pkl', 'skripsi'));
     }

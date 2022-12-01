@@ -27,6 +27,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('level')->default('user');
             $table->string('status');
+            $table->string('dosenwali')->nullable();
             $table->timestamps();
         });
     }

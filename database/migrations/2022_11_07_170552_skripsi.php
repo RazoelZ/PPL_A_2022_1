@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('semester');
             $table->date('tglsidang');
             $table->string('dosenpembimbing');
-            $table->binary('scansidang');
+            $table->string('scansidang')->nullable();
             $table->boolean('isverified')->default('0');
             $table->timestamps();
         });

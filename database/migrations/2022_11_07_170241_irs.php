@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('userid');
             $table->string('semester')->nullable();
             $table->integer('jmlsks')->nullable();
-            $table->binary('scansks')->nullable();
+            $table->string('scansks')->nullable();
             $table->boolean('isverified')->default('0');
             $table->timestamps();
         });

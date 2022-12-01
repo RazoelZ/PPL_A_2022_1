@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('skskumulatif');
             $table->float('ipsemester');
             $table->float('ipkumulatif');
-            $table->binary('scankhs');
+            $table->string('scankhs')->nullable();
             $table->boolean('isverified')->default('0');
             $table->timestamps();
         });

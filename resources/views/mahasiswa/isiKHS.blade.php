@@ -8,7 +8,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Isi KHS Mahasiswa</h6>
         </div>
         <div class="card-body">
-            <form class="user" method="POST" action="/dashboardmahasiswa/IsiKHSMahasiswa">
+            <form class="user" method="POST" action="/dashboardmahasiswa/IsiKHSMahasiswa" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     @if (session()->has('success'))
@@ -16,13 +16,17 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if (session()->has('gagal'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('gagal') }}
+                        </div>
+                    @endif
                     <div class="form-group">
-                        <label for="semester">Semester</label>
-                        <label for="">Semester Aktif</label>
+                        <label for="semester">Semester Aktif<sup class="text-danger">*</sup></label>
                         <select
                             class="custom-select @error('semester')
                 is-invalid    
-                @enderror"
+                @enderror mb-3"
                             name="semester" id="semester" required>
                             <option selected disabled>Semester</option>
                             <option value="1">Semester 1</option>
@@ -47,7 +51,7 @@
                             </div>
                         @enderror
                         <br>
-                        <label for="skssemester">SKS Semester</label>
+                        <label for="skssemester">SKS Semester<sup class="text-danger">*</sup></label>
                         <div class="form-group">
                             <input type="text"
                                 class="form-control  @error('skssemester')
@@ -62,7 +66,7 @@
                             @enderror
                         </div>
 
-                        <label for="skskumulatif">SKS Kumulatif</label>
+                        <label for="skskumulatif">SKS Kumulatif<sup class="text-danger">*</sup></label>
                         <div class="form-group">
                             <input type="text"
                                 class="form-control  @error('skskumulatif')
@@ -76,7 +80,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <label for="ipsemester">IP Semester</label>
+                        <label for="ipsemester">IP Semester<sup class="text-danger">*</sup></label>
                         <div class="form-group">
                             <input type="text"
                                 class="form-control  @error('ipsemester')
@@ -90,7 +94,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <label for="ipkumulatif">IP Kumulatif</label>
+                        <label for="ipkumulatif">IP Kumulatif<sup class="text-danger">*</sup></label>
                         <div class="form-group">
                             <input type="text"
                                 class="form-control  @error('ipkumulatif')
@@ -104,7 +108,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <label for="scankhs">Upload Scan KHS</label>
+                        <label for="scankhs">Upload Scan KHS<sup class="text-danger">*</sup></label>
                         <div class="form-group">
                             <input type="file"
                                 class="form-control  @error('scankhs')
@@ -124,7 +128,40 @@
             </form>
         </div>
     </div>
-    <br>
+    <div class="px-3">
+        <table class="table table-striped">
+            <thead>
+                @foreach ($data as $item)
+                    <tr>
+                        <th scope="col">Semester</th>
+                        <th scope="col">{{ $item['semester'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">SKS Semester</th>
+                        <th scope="col">{{ $item['skssemester'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">SKS Kumulatif</th>
+                        <th scope="col">{{ $item['skskumulatif'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">IP Semester</th>
+                        <th scope="col">{{ $item['ipsemester'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">IP Kumulatif</th>
+                        <th scope="col">{{ $item['ipkumulatif'] }}</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Scan KHS</th>
+                        <th scope="col">{{ $item['scankhs'] }}</th>
+                    </tr>
+                @endforeach
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
     </div>
     <!-- /.container-fluid -->
 @endsection
