@@ -47,7 +47,8 @@
                             <td>{{ $item['skskumulatif'] }}</td>
                             <td>{{ $item['ipsemester'] }}</td>
                             <td>{{ $item['ipkumulatif'] }}</td>
-                            <td>{{ $item['scankhs'] }}</td>
+                            <td><img src="{{ asset('/storage/post-scankhs/' . $item->scankhs) }}" alt="{{ $item->scankhs }}"
+                                    width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
                                     <a href="/dashboarddosen/khs/unverify/{{ $item['id'] }}"

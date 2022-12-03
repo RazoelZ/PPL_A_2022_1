@@ -4,14 +4,10 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard Departement</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
     <div class="card">
         <h2 class="card-header h3 mb-0 text-gray-800">Selamat Datang {{ auth()->user()->name }}</h2>
-
-        <!-- Content Row -->
-        <div class="row pt-3">
+        <div class="row pt-3 px-3">
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -20,11 +16,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Mahasiswa Aktif</div>
+                                    Total mahasiswa Aktif</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataAktif }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -38,11 +31,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                    Mahasiswa DO</div>
+                                    Total Mahasiswa DO</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataDO }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -55,16 +45,13 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mahasiswa Cuti
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Mahasiswa Cuti
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $dataCuti }}</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -78,21 +65,54 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Mahasiswa Mangkir</div>
+                                    Total Mahasiswa Mangkir</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataMangkir }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="px-3" id="barchart_material" style="width: 1200px; height: 500px;"></div>
     </div>
-    <!-- Content Row -->
-
 
     </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Aktif', 'Cuti', 'Mangkir', 'Dropout'],
+                ['2019', {{ $dataAktif2019 }}, {{ $dataCuti2019 }}, {{ $dataMangkir2019 }},
+                    {{ $dataDropout2019 }}
+                ],
+                ['2020', {{ $dataAktif2020 }}, {{ $dataCuti2020 }}, {{ $dataMangkir2020 }},
+                    {{ $dataDropout2020 }}
+                ],
+                ['2021', {{ $dataAktif2021 }}, {{ $dataCuti2021 }}, {{ $dataMangkir2021 }},
+                    {{ $dataDropout2021 }}
+                ],
+                ['2022', {{ $dataAktif2022 }}, {{ $dataCuti2022 }}, {{ $dataMangkir2022 }},
+                    {{ $dataDropout2022 }}
+                ]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Total Mahasiswa',
+                    subtitle: 'Aktif, Cuti, Mangkir, Dropout: Angkatan 2019-2022',
+                },
+                bars: 'horizontal' // Required for Material Bar Charts.
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
     <!-- /.container-fluid -->
 @endsection

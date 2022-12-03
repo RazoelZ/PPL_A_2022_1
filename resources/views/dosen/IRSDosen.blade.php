@@ -7,7 +7,7 @@
             <form>
                 <div class="col-md-12">
                     <label for="Mahasiswa" class="form-label"></label>
-                    <p class="fs-1 text-center fw-bold">IRS Mahasiswa</p>
+                    <h1 class="fs-1 text-center fw-bold">IRS Mahasiswa</h1>
                     <p class="text-center">Cari Mahasiswa</p>
                     <input type="text" class="form-control" id="Mahasiswa" placeholder="Contoh : Joko Subagyo">
                 </div>
@@ -41,7 +41,8 @@
                             <td>{{ $user[0]['name'] }}</td>
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['jmlsks'] }}</td>
-                            <td>{{ $item['scansks'] }}</td>
+                            <td><img src="{{ asset('/storage/post-scansks/' . $item->scansks) }}" alt="{{ $item->scansks }}"
+                                    width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
                                     <a href="/dashboarddosen/irs/unverify/{{ $item['id'] }}"

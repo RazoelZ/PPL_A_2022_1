@@ -35,10 +35,11 @@ class PKLMahasiswaController extends Controller
         ]);
 
         $validatedata['userid'] = auth()->user()->id;
-        $request->file('scanpkl')->store('post-scanpkl');
+        $validatedata['scanpkl'] = $nameimg = $request->file('scanpkl')->getClientOriginalName();
         if (DB::table('p_k_l_s')->where('userid',  auth()->user()->id)->count() >= 1) {
             return redirect('/dashboardmahasiswa/IsiPKLMahasiswa')->with('gagal', 'Anda Sudah memasukan data PKL');
         } else {
+            $request->file('scanpkl')->storeAs('post-scanpkl', $nameimg);
             PKL::create($validatedata);
             return redirect('/dashboardmahasiswa/IsiPKLMahasiswa')->with('success', 'Data berhasil di masukkan');
         }

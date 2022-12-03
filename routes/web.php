@@ -93,16 +93,20 @@ Route::get('/dashboardadmin', [DashboardAdminController::class, 'index'])->middl
 //viewuser
 Route::get('/dashboardadmin/viewuser', [UserAdminController::class, 'index'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/{id}', [UserAdminController::class, 'editberkas'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/delete/irs/{id}', [UserAdminController::class, 'hapusirs'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/delete/khs/{id}', [UserAdminController::class, 'hapuskhs'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/delete/pkl/{id}', [UserAdminController::class, 'hapuspkl'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/delete/skripsi/{id}', [UserAdminController::class, 'hapusskripsi'])->middleware('admin');
+
 //register user
 Route::get('/dashboardadmin/register', [RegisterController::class, 'index'])->middleware('admin');
 Route::post('/dashboardadmin/register', [RegisterController::class, 'store'])->middleware('admin');
-Route::get('/dashboardadmin/viewuser/delete/{id}', [UserAdminController::class, 'destroy'])->middleware('admin');
 //edituser
 Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index'])->middleware('admin');
 Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update'])->middleware('admin');
 //lihatuser
 Route::get('/dashboardadmin/lihatuser', [UserAdminController::class, 'showuser'])->middleware('admin');
-
+Route::get('/dashboardadmin/lihatuser/delete/{id}', [UserAdminController::class, 'destroy'])->middleware('admin');
 //departemen
 
 Route::get('/dashboarddepartment', [DashboardDepartmentController::class, 'index'])->middleware('department');

@@ -25,6 +25,19 @@ class DatabaseSeeder extends Seeder
             'jurusan' => 'Informatika S1',
             'angkatan' => '2020',
             'level' => 'user',
+            'dosenwali' => 'Prabowo Nur Khalid',
+            'status' => 'Aktif'
+        ]);
+
+        User::create([
+            'name' => 'Awan Widiatma',
+            'email' => 'awanwidiatma@gmail.com',
+            'password' => bcrypt('123123'),
+            'nim' => '24010122150214',
+            'jurusan' => 'Informatika S1',
+            'angkatan' => '2020',
+            'level' => 'user',
+            'dosenwali' => 'Prabowo Nur Khalid',
             'status' => 'Aktif'
         ]);
 

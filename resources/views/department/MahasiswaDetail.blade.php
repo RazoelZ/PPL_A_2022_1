@@ -34,7 +34,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" value="{{ $dataaktif['nomortlp'] }}" disabled>
             </div>
-            <div>
+            <div class="button-blue">
                 <a href="{{ url()->previous() }}">Back</a>
             </div>
         </div>

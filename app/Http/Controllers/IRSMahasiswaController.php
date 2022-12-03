@@ -31,10 +31,11 @@ class IRSMahasiswaController extends Controller
             'scansks' => 'required|image'
         ]);
         $validatedata['userid'] = auth()->user()->id;
-        $request->file('scansks')->store('post-scansks');
+        $validatedata['scansks'] = $nameimg = $request->file('scansks')->getClientOriginalName();
         if (DB::table('irs')->where('userid',  auth()->user()->id)->count() >= 1) {
             return redirect('/dashboardmahasiswa/IsiIRSMahasiswa')->with('gagal', 'Anda Sudah memasukan data irs');
         } else {
+            $request->file('scansks')->storeAs('post-scansks', $nameimg);
             Irs::create($validatedata);
             return redirect('/dashboardmahasiswa/IsiIRSMahasiswa')->with('success', 'Data berhasil di masukkan');
         }

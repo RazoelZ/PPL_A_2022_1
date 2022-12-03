@@ -45,7 +45,7 @@ class RegisterController extends Controller
             'angkatan' => 'required',
             'level' => 'required',
             'status' => 'required',
-            'dosenwali',
+            'dosenwali' => 'max:255',
             'password' => 'required|min:5|max:255'
         ]);
         //cara keduia

@@ -28,8 +28,7 @@
                         <th scope="col">NIM</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Angkatan</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Edit Data</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,8 +38,6 @@
                             <td>{{ $item['name'] }}</td>
                             <td>{{ $item['angkatan'] }}</td>
                             <td><a href="/dashboardadmin/viewuser/{{ $item['id'] }}" class="btn btn-warning">Edit</a></td>
-                            <td><a href="/dashboardadmin/viewuser/delete/{{ $item['id'] }}"
-                                    class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

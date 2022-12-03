@@ -108,13 +108,15 @@
                                 </div>
                             @enderror
                         </div>
-                        <label for="scankhs">Upload Scan KHS<sup class="text-danger">*</sup></label>
+                        <label for="scankhs">Upload Scan KHS<sup class="text-danger">*</sup><br>
+                            <sub class="text-danger">Upload scan berupa gambar!</sub></label>
+                        <img class="img-preview img-fluid mb-3 col-sm-5">
                         <div class="form-group">
                             <input type="file"
                                 class="form-control  @error('scankhs')
                             is-invalid    
                             @enderror"
-                                id="scankhs" name="scankhs" placeholder="Jumlah SKS" required
+                                id="scankhs" name="scankhs" onchange="previewImage()" required
                                 value="{{ old('scankhs') }}">
                             @error('scankhs')
                                 <div class="invalid-feedback">
@@ -163,5 +165,21 @@
         </table>
     </div>
     </div>
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#scankhs');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+
+        }
+    </script>
     <!-- /.container-fluid -->
 @endsection

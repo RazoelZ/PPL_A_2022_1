@@ -43,7 +43,8 @@
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['tglsidang'] }}</td>
                             <td>{{ $item['dosenpembimbing'] }}</td>
-                            <td>{{ $item['scansidang'] }}</td>
+                            <td><img src="{{ asset('/storage/post-scansidang/' . $item->scansidang) }}"
+                                    alt="{{ $item->scansidang }}" width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
                                     <a href="/dashboarddosen/skripsi/unverify/{{ $item['id'] }}"

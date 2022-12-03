@@ -17,7 +17,6 @@ class KHSMahasiswaController extends Controller
     }
     public function store(Request $request)
     {
-
         $validatedata = $request->validate([
             'semester' => 'required',
             'skssemester' => 'required|integer|lte:25',
@@ -26,14 +25,13 @@ class KHSMahasiswaController extends Controller
             'ipkumulatif' => 'required|regex:/^\d+(\.\d{1,2})?$/|lte:4',
             'scankhs' => 'required|image'
         ]);
-
         $validatedata['userid'] = auth()->user()->id;
-        $request->file('scankhs')->store('post-scankhs');
-        KHS::create($validatedata);
-
+        $validatedata['scankhs'] = $nameimg = $request->file('scankhs')->getClientOriginalName();
         if (DB::table('K_H_S')->where('userid',  auth()->user()->id)->count() > 1) {
             return redirect('/dashboardmahasiswa/IsiKHSMahasiswa')->with('gagal', 'Anda Sudah memasukan data KHS');
         } else {
+            $request->file('scankhs')->storeAs('post-scankhs', $nameimg);
+            KHS::create($validatedata);
             return redirect('/dashboardmahasiswa/IsiKHSMahasiswa')->with('success', 'Data berhasil di masukkan');
             // return $request;
         }

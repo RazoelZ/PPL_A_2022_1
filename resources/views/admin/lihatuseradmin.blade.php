@@ -5,6 +5,11 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar User Sistem Informasi</h6>
         </div>
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -13,6 +18,7 @@
                     <th scope="col">NIM/NIP</th>
                     <th scope="col">Status</th>
                     <th scope="col">Level</th>
+                    <th scope="col">Delete User</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +28,8 @@
                         <td>{{ $item['nim'] }}</td>
                         <td>{{ $item['status'] }}</td>
                         <td>{{ $item['level'] }}</td>
+                        <td><a href="/dashboardadmin/lihatuser/delete/{{ $item['id'] }}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

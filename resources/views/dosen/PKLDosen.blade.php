@@ -43,7 +43,8 @@
                             <td>{{ $item['semester'] }}</td>
                             <td>{{ $item['instansi'] }}</td>
                             <td>{{ $item['dosenpengampu'] }}</td>
-                            <td>{{ $item['scanpkl'] }}</td>
+                            <td><img src="{{ asset('/storage/post-scanpkl/' . $item->scanpkl) }}" alt="{{ $item->scanpkl }}"
+                                    width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
                                     <a href="/dashboarddosen/pkl/unverify/{{ $item['id'] }}"

@@ -28,10 +28,11 @@ class SkripsiMahasiswaController extends Controller
             'scansidang' => 'required|image'
         ]);
         $validatedata['userid'] = auth()->user()->id;
-        $request->file('scansidang')->store('post-scansidang');
+        $validatedata['scansidang'] = $nameimg = $request->file('scansidang')->getClientOriginalName();
         if (DB::table('Skripsis')->where('userid',  auth()->user()->id)->count() >= 1) {
             return redirect('/dashboardmahasiswa/IsiSkripsiMahasiswa')->with('gagal', 'Anda Sudah memasukan data Skripsi');
         } else {
+            $request->file('scansidang')->storeAs('post-scansidang', $nameimg);
             Skripsi::create($validatedata);
             return redirect('/dashboardmahasiswa/IsiPKLMahasiswa')->with('success', 'Data berhasil di masukkan');
             // return $request;

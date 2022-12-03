@@ -14,26 +14,78 @@ class DashboardDosenController extends Controller
 {
     public function index()
     {
-        // $getmhsid = user::query()
-        //     ->where('level', '=', 'user')
-        //     ->get('id');
-        // $irscount = IRS::query()
-        //     ->where('userid', '=', $getmhsid)
-        //     ->count();
-        // $khscount = KHS::query()
-        //     ->where('dosenwali', '=', auth()->user()->dosenwali)
-        //     ->count();
-        // $pklcount = PKL::query()
-        //     ->where('dosenwali', '=', auth()->user()->dosenwali)
-        //     ->count();
-        // $skripsicount = Skripsi::query()
-        //     ->where('dosenwali', '=', auth()->user()->dosenwali)
-        //     ->count();
-        // $totalmhswali = User::query()
-        //     ->where('dosenwali', '=', auth()->user()->dosenwali)
-        //     ->where('level', '=', 'user')
-        //     ->count();
 
-        return view('dosen.homedosen');
+
+        $jmlmhs = User::query()
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->count();
+
+        //IRS
+        $irscountnotverified = DB::table('irs')
+            ->join('users', 'irs.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '0')
+            ->count();
+        $irscountverified = DB::table('irs')
+            ->join('users', 'irs.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '1')
+            ->count();
+        $irsbelum = $jmlmhs - $irscountnotverified - $irscountverified;
+
+        //KHS
+        $khscountnotverified = DB::table('k_h_s')
+            ->join('users', 'k_h_s.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '0')
+            ->count();
+        $khscountverified = DB::table('k_h_s')
+            ->join('users', 'k_h_s.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '1')
+            ->count();
+        $khsbelum = $jmlmhs - $khscountnotverified - $khscountverified;
+
+        //PKL
+        $pklcountnotverified = DB::table('p_k_l_s')
+            ->join('users', 'p_k_l_s.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '0')
+            ->count();
+        $pklcountverified = DB::table('p_k_l_s')
+            ->join('users', 'p_k_l_s.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '1')
+            ->count();
+        $pklbelum = $jmlmhs - $pklcountnotverified - $pklcountverified;
+
+        //skripsi
+        $skripsicountnotverified = DB::table('skripsis')
+            ->join('users', 'skripsis.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '0')
+            ->count();
+        $skripsicountverified = DB::table('skripsis')
+            ->join('users', 'skripsis.userid', '=', 'users.id')
+            ->where('dosenwali', '=', auth()->user()->name)
+            ->where('isverified', '=', '1')
+            ->count();
+        $skripsibelum = $jmlmhs - $skripsicountnotverified - $skripsicountverified;
+
+        return view('dosen.homedosen', compact(
+            'jmlmhs',
+            'irscountverified',
+            'irscountnotverified',
+            'irsbelum',
+            'khscountnotverified',
+            'khscountverified',
+            'khsbelum',
+            'pklcountnotverified',
+            'pklcountverified',
+            'pklbelum',
+            'skripsicountnotverified',
+            'skripsicountverified',
+            'skripsibelum'
+        ));
     }
 }

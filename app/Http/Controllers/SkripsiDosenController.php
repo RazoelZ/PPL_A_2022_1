@@ -19,7 +19,7 @@ class SkripsiDosenController extends Controller
         $dataskripsi->isverified = $request->isverified;
         // dd($request);
         $dataskripsi->update(['isverified' => 1]);
-        return redirect('/dashboarddosen/pkl');
+        return redirect('/dashboarddosen/skripsi');
     }
 
     public function unchangestatus(Request $request)
@@ -27,8 +27,7 @@ class SkripsiDosenController extends Controller
         $dataskripsi = Skripsi::find($request->id);
 
         $dataskripsi->isverified = $request->isverified;
-        // dd($request);
         $dataskripsi->update(['isverified' => 0]);
-        return redirect('/dashboarddosen/pkl');
+        return redirect('/dashboarddosen/skripsi');
     }
 }
