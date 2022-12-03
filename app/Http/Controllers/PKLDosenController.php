@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\PKL;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PKLDosenController extends Controller
 {
     public function index()
     {
-        $datapkl = PKL::all();
+        $datapkl = DB::table('p_k_l_s')
+            ->join('users', 'p_k_l_s.userid', '=', 'users.id')
+            ->select('users.name', 'p_k_l_s.id', 'p_k_l_s.semester', 'p_k_l_s.instansi', 'p_k_l_s.dosenpengampu', 'p_k_l_s.scanpkl', 'p_k_l_s.isverified')
+            ->paginate(10);
         return view('dosen.pkldosen', compact('datapkl'));
     }
     public function changestatus(Request $request)

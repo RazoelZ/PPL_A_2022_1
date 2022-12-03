@@ -30,34 +30,26 @@
                 </thead>
                 <tbody>
                     @foreach ($datairs as $item)
-                        <?php
-                        // dd($item);
-                        $user = App\Models\User::where('id', '=', $item['userid'])
-                            ->get()
-                            ->toarray();
-                        // dd($user);
-                        ?>
                         <tr>
-                            <td>{{ $user[0]['name'] }}</td>
-                            <td>{{ $item['semester'] }}</td>
-                            <td>{{ $item['jmlsks'] }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>{{ $item->jmlsks }}</td>
                             <td><img src="{{ asset('/storage/post-scansks/' . $item->scansks) }}" alt="{{ $item->scansks }}"
                                     width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
-                                    <a href="/dashboarddosen/irs/unverify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/irs/unverify/{{ $item->id }}"
                                         class="btn btn-danger">Batal</a>
                                 @else
-                                    <a href="/dashboarddosen/irs/verify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/irs/verify/{{ $item->id }}"
                                         class="btn btn-success">Setujui</a>
                                 @endif
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
+            {{ $datairs->links() }}
         </div>
     </div>
     </body>

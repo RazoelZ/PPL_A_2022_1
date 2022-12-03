@@ -26,11 +26,10 @@ class EditProfileMahasiswaController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $validatedata = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|',
             'nim' => 'required|integer',
             'jurusan' => 'required|string',
             'angkatan' => 'required|integer|digits:4',
@@ -38,9 +37,9 @@ class EditProfileMahasiswaController extends Controller
             'nomortlp' => 'required|digits_between:8,12:'
         ]);
         //('angkatan', $id)->get();
-        $validatedata['id'] = auth()->user()->id;
-        User::where('id', auth()->user()->id)->update($validatedata);
+        // $validatedata['id'] = auth()->user()->id;
+        User::where('id', $id)->update($validatedata);
 
-        return redirect('/dashboardmahasiswa/profile/edit')->with('success', 'Data berhasil di Perbarui');
+        return redirect('/dashboardadmin/viewuser')->with('success', 'Data berhasil di Perbarui');
     }
 }

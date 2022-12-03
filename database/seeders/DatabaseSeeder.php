@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
             'jurusan' => 'Informatika S1',
             'angkatan' => '1995',
             'level' => 'admin',
-            'status' => 'Aktif'
+            'status' => 'Operator'
         ]);
     }
 }

@@ -22,16 +22,17 @@
                 <tbody>
                     @foreach ($datacuti as $item)
                         <tr>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['nim'] }}</td>
-                            <td>{{ $item['jurusan'] }}</td>
-                            <td>{{ $item['angkatan'] }}</td>
-                            <td><a href="/dashboarddepartment/mhscuti/detail/{{ $item['id'] }}"
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->jurusan }}</td>
+                            <td>{{ $item->angkatan }}</td>
+                            <td><a href="/dashboarddepartment/mhscuti/detail/{{ $item->id }}"
                                     class="btn btn-info">Details</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $datacuti->links() }}
         </div>
     </div>
     <script>

@@ -31,26 +31,19 @@
                 </thead>
                 <tbody>
                     @foreach ($dataskripsi as $item)
-                        <?php
-                        // dd($item);
-                        $user = App\Models\User::where('id', '=', $item['userid'])
-                            ->get()
-                            ->toarray();
-                        // dd($user);
-                        ?>
                         <tr>
-                            <td>{{ $user[0]['name'] }}</td>
-                            <td>{{ $item['semester'] }}</td>
-                            <td>{{ $item['tglsidang'] }}</td>
-                            <td>{{ $item['dosenpembimbing'] }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>{{ $item->tglsidang }}</td>
+                            <td>{{ $item->dosenpembimbing }}</td>
                             <td><img src="{{ asset('/storage/post-scansidang/' . $item->scansidang) }}"
                                     alt="{{ $item->scansidang }}" width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
-                                    <a href="/dashboarddosen/skripsi/unverify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/skripsi/unverify/{{ $item->id }}"
                                         class="btn btn-danger">Batal</a>
                                 @else
-                                    <a href="/dashboarddosen/skripsi/verify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/skripsi/verify/{{ $item->id }}"
                                         class="btn btn-success">Setujui</a>
                                 @endif
                             </td>
@@ -58,6 +51,8 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $dataskripsi->links() }}
+
         </div>
     </div>
     </body>

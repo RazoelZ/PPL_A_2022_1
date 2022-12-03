@@ -22,18 +22,20 @@
                 <tbody>
                     @foreach ($datamangkir as $item)
                         <tr>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['nim'] }}</td>
-                            <td>{{ $item['jurusan'] }}</td>
-                            <td>{{ $item['angkatan'] }}</td>
-                            <td><a href="/dashboarddepartment/mhsmangkir/detail/{{ $item['id'] }}"
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->jurusan }}</td>
+                            <td>{{ $item->angkatan }}</td>
+                            <td><a href="/dashboarddepartment/mhsmangkir/detail/{{ $item->id }}"
                                     class="btn btn-info">Details</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $datamangkir->links() }}
         </div>
     </div>
+
     <script>
         var tables = document.getElementsByTagName('table');
         var table = tables[tables.length - 1];

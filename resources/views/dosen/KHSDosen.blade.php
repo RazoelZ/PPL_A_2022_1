@@ -33,28 +33,21 @@
                 </thead>
                 <tbody>
                     @foreach ($datakhs as $item)
-                        <?php
-                        // dd($item);
-                        $user = App\Models\User::where('id', '=', $item['userid'])
-                            ->get()
-                            ->toarray();
-                        // dd($user);
-                        ?>
                         <tr>
-                            <td>{{ $user[0]['name'] }}</td>
-                            <td>{{ $item['semester'] }}</td>
-                            <td>{{ $item['skssemester'] }}</td>
-                            <td>{{ $item['skskumulatif'] }}</td>
-                            <td>{{ $item['ipsemester'] }}</td>
-                            <td>{{ $item['ipkumulatif'] }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>{{ $item->skssemester }}</td>
+                            <td>{{ $item->skskumulatif }}</td>
+                            <td>{{ $item->ipsemester }}</td>
+                            <td>{{ $item->ipkumulatif }}</td>
                             <td><img src="{{ asset('/storage/post-scankhs/' . $item->scankhs) }}" alt="{{ $item->scankhs }}"
                                     width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
-                                    <a href="/dashboarddosen/khs/unverify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/khs/unverify/{{ $item->id }}"
                                         class="btn btn-danger">Batal</a>
                                 @else
-                                    <a href="/dashboarddosen/khs/verify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/khs/verify/{{ $item->id }}"
                                         class="btn btn-success">Setujui</a>
                                 @endif
                             </td>
@@ -62,6 +55,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $datakhs->links() }}
         </div>
     </div>
     <script>

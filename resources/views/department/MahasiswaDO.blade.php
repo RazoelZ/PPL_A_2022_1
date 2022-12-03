@@ -22,16 +22,17 @@
                 <tbody>
                     @foreach ($dataDO as $item)
                         <tr>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['nim'] }}</td>
-                            <td>{{ $item['jurusan'] }}</td>
-                            <td>{{ $item['angkatan'] }}</td>
-                            <td><a href="/dashboarddepartment/mhsaktif/detail/{{ $item['id'] }}"
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->nim }}</td>
+                            <td>{{ $item->jurusan }}</td>
+                            <td>{{ $item->angkatan }}</td>
+                            <td><a href="/dashboarddepartment/mhsaktif/detail/{{ $item->id }}"
                                     class="btn btn-info">Details</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $dataDO->links() }}
         </div>
     </div>
     <script>

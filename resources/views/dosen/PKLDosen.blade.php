@@ -31,26 +31,19 @@
                 </thead>
                 <tbody>
                     @foreach ($datapkl as $item)
-                        <?php
-                        // dd($item);
-                        $user = App\Models\User::where('id', '=', $item['userid'])
-                            ->get()
-                            ->toarray();
-                        // dd($user);
-                        ?>
                         <tr>
-                            <td>{{ $user[0]['name'] }}</td>
-                            <td>{{ $item['semester'] }}</td>
-                            <td>{{ $item['instansi'] }}</td>
-                            <td>{{ $item['dosenpengampu'] }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>{{ $item->instansi }}</td>
+                            <td>{{ $item->dosenpengampu }}</td>
                             <td><img src="{{ asset('/storage/post-scanpkl/' . $item->scanpkl) }}" alt="{{ $item->scanpkl }}"
                                     width="250px" height="200px"></td>
                             <td>
                                 @if ($item->isverified == 1)
-                                    <a href="/dashboarddosen/pkl/unverify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/pkl/unverify/{{ $item->id }}"
                                         class="btn btn-danger">Batal</a>
                                 @else
-                                    <a href="/dashboarddosen/pkl/verify/{{ $item['id'] }}"
+                                    <a href="/dashboarddosen/pkl/verify/{{ $item->id }}"
                                         class="btn btn-success">Setujui</a>
                                 @endif
                             </td>
@@ -58,6 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $datapkl->links() }}
         </div>
     </div>
     </body>

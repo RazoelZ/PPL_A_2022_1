@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\IRS;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IRSDosenController extends Controller
 {
     public function index()
     {
-        $datairs = IRS::all();
+        $datairs = DB::table('irs')
+            ->join('users', 'irs.userid', '=', 'users.id')
+            ->select('users.name', 'irs.id', 'irs.semester', 'irs.jmlsks', 'irs.scansks', 'irs.isverified')
+            ->paginate(10);
         return view('dosen.irsdosen', compact('datairs'));
     }
 

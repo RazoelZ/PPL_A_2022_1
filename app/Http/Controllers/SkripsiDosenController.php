@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Skripsi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SkripsiDosenController extends Controller
 {
     public function index()
     {
-        $dataskripsi = Skripsi::all();
+        $dataskripsi = DB::table('skripsis')
+            ->join('users', 'skripsis.userid', '=', 'users.id')
+            ->select('users.name', 'skripsis.id', 'skripsis.semester', 'skripsis.tglsidang', 'skripsis.dosenpembimbing', 'skripsis.scansidang', 'skripsis.isverified')
+            ->paginate(10);
         return view('dosen.skripsidosen', compact('dataskripsi'));
     }
     public function changestatus(Request $request)

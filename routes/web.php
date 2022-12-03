@@ -97,6 +97,8 @@ Route::get('/dashboardadmin/viewuser/delete/irs/{id}', [UserAdminController::cla
 Route::get('/dashboardadmin/viewuser/delete/khs/{id}', [UserAdminController::class, 'hapuskhs'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/pkl/{id}', [UserAdminController::class, 'hapuspkl'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/skripsi/{id}', [UserAdminController::class, 'hapusskripsi'])->middleware('admin');
+Route::get('/dashboardadmin/viewuser/update/{id}', [UserAdminController::class, 'toprofildata'])->middleware('admin');
+Route::put('/dashboardadmin/viewuser/update/{id}/data', [UserAdminController::class, 'update'])->middleware('admin');
 
 //register user
 Route::get('/dashboardadmin/register', [RegisterController::class, 'index'])->middleware('admin');

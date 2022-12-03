@@ -9,9 +9,25 @@ class DashboardAdminController extends Controller
 {
     public function index()
     {
+        //status
         $useractivecount = User::query()
             ->where('status', '=', 'Aktif')
             ->count();
+        $userMangkircount = User::query()
+            ->where('status', '=', 'Mangkir')
+            ->count();
+        $userCuticount = User::query()
+            ->where('status', '=', 'Cuti')
+            ->count();
+        $userDropoutcount = User::query()
+            ->where('status', '=', 'Dropout')
+            ->count();
+        $userOperatorcount = User::query()
+            ->where('status', '=', 'Operator')
+            ->count();
+
+
+        //level
         $mahasiswa = User::query()
             ->where('level', '=', 'user')
             ->count();
@@ -25,6 +41,18 @@ class DashboardAdminController extends Controller
             ->where('level', '=', 'admin')
             ->count();
 
-        return view('admin.dashboardadmin', compact('useractivecount', 'mahasiswa', 'dosen', 'department', 'admin'));
+
+
+        return view('admin.dashboardadmin', compact(
+            'useractivecount',
+            'mahasiswa',
+            'dosen',
+            'department',
+            'admin',
+            'userMangkircount',
+            'userCuticount',
+            'userDropoutcount',
+            'userOperatorcount'
+        ));
     }
 }

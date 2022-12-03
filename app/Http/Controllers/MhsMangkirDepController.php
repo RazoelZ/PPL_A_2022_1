@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MhsMangkirDepController extends Controller
 {
     public function index()
     {
-        $datamangkir = User::query()
-            ->where('status', '=', 'Mangkir')
+        $datamangkir = DB::table('users')
+            ->where('status', '=', 'Mangkir', 'and')
             ->where('level', '=', 'user')
-            ->get();
+            ->paginate(10);
         return view('department.mahasiswamangkir', compact('datamangkir'));
     }
     function detail($id)

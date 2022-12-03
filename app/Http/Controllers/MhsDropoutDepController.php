@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MhsDropoutDepController extends Controller
 {
     public function index()
     {
-        $dataDO = User::query()
-            ->where('status', '=', 'Dropout')
+        $dataDO = DB::table('users')
+            ->where('status', '=', 'Dropout', 'and')
             ->where('level', '=', 'user')
-            ->get();
+            ->paginate(10);
         return view('department.mahasiswado', compact('dataDO'));
     }
     function detail($id)
