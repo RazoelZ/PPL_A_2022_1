@@ -2,8 +2,8 @@
 
 @section('container')
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Isi Data Diri Mahasiswa</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Isi Data Diri Mahasiswa</h6>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

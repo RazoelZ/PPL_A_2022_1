@@ -35,7 +35,7 @@
         <div class="sidebar-brand-icon">
           <img src="{{ asset('assets/img/lgoundip.png') }}" alt="logo_undip" height="30" width="30">
         </div>
-        <div class="sidebar-brand-text mx-3">PPL UNDIP<sup>1.0</sup></div>
+        <div class="sidebar-brand-text mx-3">DIPO PATHS</div>
       </a>
 
       <!-- Divider -->

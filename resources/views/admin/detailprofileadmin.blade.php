@@ -7,8 +7,8 @@
         </div>
     @endif
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Update User</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Update User</h6>
         </div>
         @foreach ($user as $item)
             <form class="user px-5 pt-3" action="/dashboardadmin/viewuser/update/{id}" method="POST">

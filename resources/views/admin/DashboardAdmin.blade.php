@@ -3,7 +3,7 @@
 @section('container')
     <div class="row">
         <div class="col-2">
-            <img class="img-profile rounded-circle" src="{{ asset('assets/img/undraw_profile.svg') }}">
+            <img class="img-profile rounded-circle" style="width: 200px; height:200px;" src="{{ asset('assets/img/admin.jpg') }}">
         </div>
         <div class="col-9" style="margin-top: 15px;">
             <br>
@@ -14,7 +14,7 @@
     </div>
     <br>
     <div class="card">
-        <h2 class="card-header h3 mb-0 text-gray-800">Selamat Datang {{ auth()->user()->name }}</h2>
+        <h2 class="card-header h3 mb-0 text-gray-800"><b>Selamat Datang, {{ auth()->user()->name }}</b></h2>
 
         <div class="row pt-3 px-3">
 

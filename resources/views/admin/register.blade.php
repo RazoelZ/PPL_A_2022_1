@@ -14,8 +14,8 @@
     @endif
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftarkan User</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Daftarkan User</h6>
         </div>
         <form class="user p-5" action="/dashboardadmin/register" method="POST">
             @csrf

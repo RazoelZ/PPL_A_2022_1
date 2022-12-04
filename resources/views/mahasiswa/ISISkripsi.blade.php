@@ -4,8 +4,8 @@
     <!-- Page Heading -->
     <!-- Basic Card Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Isi Skripsi Mahasiswa</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Isi Skripsi Mahasiswa</h6>
         </div>
         <div class="card-body">
             <form class="user" method="POST" action="/dashboardmahasiswa/IsiSkripsiMahasiswa" enctype="multipart/form-data">
@@ -94,7 +94,7 @@
                     @enderror
                 </div>
                 <button class="btn btn-primary btn-user btn-block" type="submit">
-                    Login
+                    Submit
                 </button>
         </div>
         </form>

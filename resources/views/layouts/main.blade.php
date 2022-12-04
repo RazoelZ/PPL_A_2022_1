@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon">
                     <img src="{{ asset('assets/img/lgoundip.png') }}" alt="logo_undip" height="40" width="40">
                 </div>
-                <div class="sidebar-brand-text mx-3">PPL Undip<sup>1.0</sup></div>
+                <div class="sidebar-brand-text mx-3">DIPO PATHS</div>
             </a>
 
             <!-- Divider -->
@@ -98,12 +98,13 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    {{-- <!-- Topbar Search -->
+                    {{--
+                    <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -145,10 +146,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name
+                                    }}</span>
+                                <img class="img-profile rounded-circle" src="{{ asset('assets/img/dom.jpg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -158,8 +158,7 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -183,7 +182,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; PPL UNDIP 2022</span>
+                            <span>Copyright &copy; DIPO PATHS 2022</span>
                         </div>
                     </div>
                 </footer>

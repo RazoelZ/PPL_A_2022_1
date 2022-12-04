@@ -3,12 +3,12 @@
 @section('container')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><strong>Dashboard</strong></h1>
+        <h1 class="h3 mb-0 text-gray-800"><strong>DASHBOARD</strong></h1>
     </div>
 
     <!-- Content Row -->
     <div class="card pb-4">
-        <h3 class="card-header mb-3">Selamat Datang {{ auth()->user()->name }}</h3>
+        <h3 class="card-header mb-3 text-gray-800"><b>Selamat Datang, {{ auth()->user()->name }}</b></h3>
 
         <div class="row">
 
@@ -111,7 +111,7 @@
 
 
         <div class="card-body">
-            <h1 class="card-title">{{ auth()->user()->name }}</h1>
+            <h2 class="card-title">{{ auth()->user()->name }}</h2>
             <h3 class="card-text">NIM</h3>
             <h5 class="card-text">{{ auth()->user()->nim }}</h5>
             <h3 class="card-text">Jurusan</h3>

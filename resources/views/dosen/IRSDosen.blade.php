@@ -3,8 +3,8 @@
 @section('container')
     <!-- Begin Page Content -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Isian Rencana Studi (IRS) Mahasiswa Perwalian</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Isian Rencana Studi (IRS) Mahasiswa Perwalian</h6>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -18,8 +18,8 @@
         @endif
         <form action="/dashboarddosen/irs" method="GET">
             <div class="input-group p-3">
-                <input type="search" class="form-control" placeholder="Cari nama mahasiswa" name="search" id="search">
-                <button class="btn btn-outline-primary" type="submit">Button</button>
+                <input type="search" class="form-control" placeholder="Cari Nama Mahasiswa" name="search" id="search">
+                <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
         </form>
         <table class="table table-striped m-3">

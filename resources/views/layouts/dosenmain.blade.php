@@ -36,7 +36,7 @@
                 <div class="sidebar-brand-icon">
                     <img src="{{ asset('assets/img/lgoundip.png') }}" alt="logo_undip" height="40" width="40">
                 </div>
-                <div class="sidebar-brand-text mx-3">PPL Undip<sup>1.0</sup></div>
+                <div class="sidebar-brand-text mx-3">DIPO PATHS</div>
             </a>
 
             <!-- Divider -->
@@ -145,7 +145,7 @@
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
+                                    src="{{ asset('assets/img/dosen.jpg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -178,7 +178,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; DIPO PATHS 2022</span>
                     </div>
                 </div>
             </footer>
