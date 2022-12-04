@@ -14,7 +14,6 @@
                 <button class="btn btn-outline-primary" type="submit">Button</button>
             </div>
         </form>
-
         <div class="card-body">
             <table class="table table-striped m-3">
                 <thead>
@@ -40,6 +39,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end">
+                <a href="/export-users-aktif" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+            </div>
             {{ $dataaktif->links() }}
         </div>
     </div>

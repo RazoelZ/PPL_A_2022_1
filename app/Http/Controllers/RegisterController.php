@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Imports\ImportMahasiswa;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegisterController extends Controller
 {
@@ -31,7 +33,7 @@ class RegisterController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -103,5 +105,22 @@ class RegisterController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        $file = $request->file('file');
+        $nama_file = rand() . $file->getClientOriginalName();
+        $file->move('data_file', $nama_file);
+        Excel::import(new ImportMahasiswa, public_path('/data_file/' . $nama_file));
+        return redirect('/dashboardadmin/register')->with('success', 'Registrasi Berhasil');
+    }
+
+    public function download()
+    {
+        $filepath = public_path("data_file/template.xlsx");
+        return response()->download($filepath);
     }
 }

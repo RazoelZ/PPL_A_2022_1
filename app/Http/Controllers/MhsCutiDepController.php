@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportMahasiswaCuti;
 
 class MhsCutiDepController extends Controller
 {
@@ -27,5 +29,9 @@ class MhsCutiDepController extends Controller
     {
         $dataaktif = User::find($id);
         return view('department.MahasiswaDetail', compact('dataaktif'));
+    }
+    public function export()
+    {
+        return Excel::download(new ExportMahasiswaCuti, 'mahasiswa-cuti.xlsx');
     }
 }

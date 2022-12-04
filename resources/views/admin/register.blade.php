@@ -1,23 +1,22 @@
 @extends('layouts.adminmain')
 
 @section('container')
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if (session()->has('logingagal'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('logingagal') }}
-        </div>
-    @endif
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftarkan User</h6>
         </div>
-        <form class="user p-5" action="/dashboardadmin/register" method="POST">
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session()->has('logingagal'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('logingagal') }}
+            </div>
+        @endif
+        <form class="user p-3" action="/dashboardadmin/register" method="POST">
             @csrf
             <label for="name">Nama<sup class="text-danger">*</sup></label>
             <div class="form-group">
@@ -151,9 +150,28 @@
                                 </div>
                             @enderror
                         </div>
-                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                        <button class="btn btn-primary w-100" type="submit">
                             Register
                         </button>
         </form>
+    </div>
+    </div>
+    </div>
+    <div class="card shadow p-3">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Daftarkan Dengan Mengimport Excel</h6>
+        </div>
+        <form action="{{ route('mahasiswa.import') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <input type="file" name="file" class="form-control" id="file" placeholder="File"
+                    required="required">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Import</button>
+        </form>
+        <div class="pl-2 pt-4">
+            <a href="/template" class="btn btn-info">Download Template</a>
+        </div>
+
     </div>
 @endsection

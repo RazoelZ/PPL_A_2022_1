@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportMahasiswaMangkir;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MhsMangkirDepController extends Controller
 {
@@ -27,5 +29,9 @@ class MhsMangkirDepController extends Controller
     {
         $dataaktif = User::find($id);
         return view('department.MahasiswaDetail', compact('dataaktif'));
+    }
+    public function export()
+    {
+        return Excel::download(new ExportMahasiswaMangkir, 'mahasiswa-mangkir.xlsx');
     }
 }

@@ -102,10 +102,16 @@ Route::get('/dashboardadmin/viewuser/delete/irs/{id}', [UserAdminController::cla
 Route::get('/dashboardadmin/viewuser/delete/khs/{id}', [UserAdminController::class, 'hapuskhs'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/pkl/{id}', [UserAdminController::class, 'hapuspkl'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/skripsi/{id}', [UserAdminController::class, 'hapusskripsi'])->middleware('admin');
+Route::get('/export-mahasiswa', [UserAdminController::class, 'export'])->middleware('admin');
 
 //register user
 Route::get('/dashboardadmin/register', [RegisterController::class, 'index'])->middleware('admin');
 Route::post('/dashboardadmin/register', [RegisterController::class, 'store'])->middleware('admin');
+Route::post('/import', [
+  RegisterController::class,
+  'import'
+])->name('mahasiswa.import');
+Route::get('/template', [RegisterController::class, 'download'])->middleware('admin');
 //edituser
 Route::get('/dashboardadmin/edituser/{id}', [EditMhsAdminController::class, 'index'])->middleware('admin');
 Route::put('/dashboardadmin/edituser/{id}', [EditMhsAdminController::class, 'update'])->middleware('admin');
@@ -118,12 +124,19 @@ Route::get('/dashboarddepartment', [DashboardDepartmentController::class, 'index
 //Mahasiswa Aktif
 Route::get('/dashboarddepartment/mhsaktif', [MhsAktifDepController::class, 'index'])->middleware('department');
 Route::get('/dashboarddepartment/mhsaktif/detail/{id}', [MhsAktifDepController::class, 'detail'])->middleware('department');
+Route::get('/export-users-aktif', [MhsAktifDepController::class, 'export'])->middleware('department');
+
 //Mahasiswa DropOut
 Route::get('/dashboarddepartment/mhsdo', [MhsDropoutDepController::class, 'index'])->middleware('department');
 Route::get('/dashboarddepartment/mhsdo/detail/{id}', [MhsDropoutDepController::class, 'detail'])->middleware('department');
+Route::get('/export-users-do', [MhsDropoutDepController::class, 'export'])->middleware('department');
+
 //Mahasiswa Mangkir
 Route::get('/dashboarddepartment/mhsmangkir', [MhsMangkirDepController::class, 'index'])->middleware('department');
 Route::get('/dashboarddepartment/mhsmangkir/detail/{id}', [MhsMangkirDepController::class, 'detail'])->middleware('department');
+Route::get('/export-users-mangkir', [MhsMangkirDepController::class, 'export'])->middleware('department');
+
 //Mahasiswa Cuti
 Route::get('/dashboarddepartment/mhscuti', [MhsCutiDepController::class, 'index'])->middleware('department');
 Route::get('/dashboarddepartment/mhscuti/detail/{id}', [MhsCutiDepController::class, 'detail'])->middleware('department');
+Route::get('/export-users-cuti', [MhsCutiDepController::class, 'export'])->middleware('department');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportAllUser;
 use App\Models\IRS;
 use App\Models\KHS;
 use App\Models\PKL;
@@ -9,6 +10,7 @@ use App\Models\Skripsi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserAdminController extends Controller
 {
@@ -78,6 +80,10 @@ class UserAdminController extends Controller
         return redirect('/dashboardadmin/viewuser')->with('success', 'Hapus data Skripsi mahasiswa berhasil!');
     }
 
+    public function export()
+    {
+        return Excel::download(new ExportAllUser, 'mahasiswa.xlsx');
+    }
 
     public function destroy($id)
     {

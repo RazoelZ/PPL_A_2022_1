@@ -10,6 +10,9 @@
                 <input type="search" class="form-control" placeholder="Cari user / level" name="search" id="search">
                 <button class="btn btn-outline-primary" type="submit">Button</button>
             </div>
+            <div class="d-flex justify-content-end pr-3">
+                <a href="/export-mahasiswa" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+            </div>
         </form>
         <table class="table table-striped">
             @if (session()->has('success'))
@@ -53,6 +56,7 @@
             </tbody>
         </table>
         {{ $mahasiswa->links() }}
+
     </div>
     <script>
         var tables = document.getElementsByTagName('table');

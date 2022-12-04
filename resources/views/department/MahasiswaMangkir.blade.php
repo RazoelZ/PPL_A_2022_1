@@ -38,6 +38,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end">
+                <a href="/export-users-mangkir" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+            </div>
             {{ $datamangkir->links() }}
         </div>
     </div>
