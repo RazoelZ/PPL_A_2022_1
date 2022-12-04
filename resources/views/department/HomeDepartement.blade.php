@@ -3,10 +3,10 @@
 @section('container')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard Departement</h1>
+        <h1 class="h3 mb-0 text-gray-800"><strong>DASHBOARD</strong></h1>
     </div>
     <div class="card">
-        <h2 class="card-header h3 mb-0 text-gray-800">Selamat Datang {{ auth()->user()->name }}</h2>
+        <h2 class="card-header h3 mb-0 text-gray-800"><b>Selamat Datang, {{ auth()->user()->name }}</b></h2>
         <div class="row pt-3 px-3">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -16,7 +16,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Total mahasiswa Aktif</div>
+                                    Total mahasiswa <b>Aktif</b></div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataAktif }}</div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                    Total Mahasiswa DO</div>
+                                    Total Mahasiswa <b>DO</b></div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataDO }}</div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Mahasiswa Cuti
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Mahasiswa <b>Cuti</b>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -65,7 +65,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Total Mahasiswa Mangkir</div>
+                                    Total Mahasiswa <b>Mangkir</b></div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dataMangkir }}</div>
                             </div>
                         </div>

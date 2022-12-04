@@ -24,13 +24,38 @@
 
 <body>
     <style>
+        @keyframes animatedBackground {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 100% 0;
+            }
+        }
+
+        /* #animate-area {
+            width: 1200px;
+            height: 713px;
+            background-image: url('assets/img/blurred-bg.jpg');
+            background-position: 0px 0px;
+            background-repeat: repeat-x;
+            animation: animatedBackground 10s linear infinite alternate;
+            box-shadow: 0px 28px 28px #000;
+            -moz-box-shadow: 0px 28px 28px #000;
+            -webkit-box-shadow: 0px 28px 28px #000;
+            -khtml-box-shadow: 0px 28px 28px #000;
+        } */
+
         body {
-            background-image: url('assets/img/wp.jpg');
+            background-image: url('assets/img/image1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
         }
     </style>
+
+    <!-- <div id="animate-area" class="mx-auto" style="background-color: #f0f0f0"> -->
 
     <div class="container">
 
@@ -39,7 +64,7 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-5" style="border-radius: 3%">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
@@ -50,11 +75,15 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4"><b>Selamat Datang!</b></h1>
+                                        <h5 class="h5 text-gray-900 mb-4">Di</h5>
+                                        <marquee class="h4 text-gray-900" direction="right" behavior="alternate">
+                                            <b>DIPO PATHS</b>
+                                        </marquee>
                                         @if (session()->has('logingagal'))
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                {{ session('logingagal') }}
-                                            </div>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{ session('logingagal') }}
+                                        </div>
                                         @endif
                                     </div>
                                     <form class="user" action="/" method="POST">
@@ -65,19 +94,19 @@
                                                 id="email" placeholder="Email Address" required
                                                 value="{{ old('email') }}" autofocus>
                                             @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password"
                                                 class="form-control form-control-user @error('password') is-invalid @enderror""
-                                                id="password" placeholder="Input your password" required>
+                                                id=" password" placeholder="Input your password" required>
                                             @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block" type="submit">
@@ -88,12 +117,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
+    <!-- </div> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>

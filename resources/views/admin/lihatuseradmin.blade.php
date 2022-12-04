@@ -2,13 +2,13 @@
 
 @section('container')
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar User Sistem Informasi</h6>
+        <div class="card-header py-3 bg-secondary">
+            <h6 class="m-0 font-weight-bold text-white">Daftar User Sistem Informasi</h6>
         </div>
         <form action="/dashboardadmin/lihatuser" method="GET">
             <div class="input-group p-3">
                 <input type="search" class="form-control" placeholder="Cari user" name="search" id="search">
-                <button class="btn btn-outline-primary" type="submit">Button</button>
+                <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
         </form>
         @if (session()->has('success'))
