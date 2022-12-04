@@ -26,6 +26,10 @@
             <div class="form-group">
                 <input type="text" class="form-control" value="{{ $dataaktif['angkatan'] }}" disabled>
             </div>
+            <label>Dosen Wali</label>
+            <div class="form-group">
+                <input type="text" class="form-control" value="{{ $dataaktif['dosenwali'] }}" disabled>
+            </div>
             <label>Alamat</label>
             <div class="form-group">
                 <input type="text" class="form-control" value="{{ $dataaktif['alamat'] }}" disabled>

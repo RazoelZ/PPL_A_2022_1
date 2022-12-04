@@ -8,12 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class MhsDropoutDepController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dataDO = DB::table('users')
-            ->where('status', '=', 'Dropout', 'and')
-            ->where('level', '=', 'user')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $dataDO = DB::table('users')
+                ->where('status', '=', 'Dropout', 'and')
+                ->where('level', '=', 'user')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $dataDO = DB::table('users')
+                ->where('status', '=', 'Dropout', 'and')
+                ->where('level', '=', 'user')
+                ->paginate(10);
+        }
         return view('department.mahasiswado', compact('dataDO'));
     }
     function detail($id)

@@ -8,6 +8,7 @@ use App\Models\PKL;
 use App\Models\Skripsi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserAdminController extends Controller
 {
@@ -16,17 +17,26 @@ class UserAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswa = User::where('level', '=', 'user')->get();
+        if ($request->has('search')) {
+            $mahasiswa =  DB::table('users')->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('level', 'LIKE', '%' . $request->search . '%')
+                ->paginate(10);
+        } else {
+            $mahasiswa =  DB::table('users')->paginate(10);
+        }
         return view('admin.datamahasiswalengkap', compact('mahasiswa'));
     }
 
-    public function showuser()
+    public function showuser(Request $request)
     {
-        $datauser = User::query()
-            ->orderBy('level', 'asc')
-            ->get();
+        if ($request->has('search')) {
+            $datauser =  DB::table('users')->orderBy('level', 'asc')->where('name', 'LIKE', '%' . $request->search . '%')
+                ->paginate(10);
+        } else {
+            $datauser =  DB::table('users')->orderBy('level', 'asc')->paginate(10);
+        }
         return view('admin.lihatuseradmin', compact('datauser'));
     }
 

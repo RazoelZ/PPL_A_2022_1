@@ -8,12 +8,20 @@ use Illuminate\Support\Facades\DB;
 
 class SkripsiDosenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dataskripsi = DB::table('skripsis')
-            ->join('users', 'skripsis.userid', '=', 'users.id')
-            ->select('users.name', 'skripsis.id', 'skripsis.semester', 'skripsis.tglsidang', 'skripsis.dosenpembimbing', 'skripsis.scansidang', 'skripsis.isverified')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $dataskripsi = DB::table('skripsis')
+                ->join('users', 'skripsis.userid', '=', 'users.id')
+                ->select('users.name', 'skripsis.id', 'skripsis.semester', 'skripsis.tglsidang', 'skripsis.dosenpembimbing', 'skripsis.scansidang', 'skripsis.isverified')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $dataskripsi = DB::table('skripsis')
+                ->join('users', 'skripsis.userid', '=', 'users.id')
+                ->select('users.name', 'skripsis.id', 'skripsis.semester', 'skripsis.tglsidang', 'skripsis.dosenpembimbing', 'skripsis.scansidang', 'skripsis.isverified')
+                ->paginate(10);
+        }
+
         return view('dosen.skripsidosen', compact('dataskripsi'));
     }
     public function download($id)

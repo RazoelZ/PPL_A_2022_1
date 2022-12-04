@@ -8,12 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class MhsCutiDepController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datacuti = DB::table('users')
-            ->where('status', '=', 'Cuti', 'and')
-            ->where('level', '=', 'user')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $datacuti = DB::table('users')
+                ->where('status', '=', 'Cuti', 'and')
+                ->where('level', '=', 'user')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $datacuti = DB::table('users')
+                ->where('status', '=', 'Cuti', 'and')
+                ->where('level', '=', 'user')
+                ->paginate(10);
+        }
         return view('department.mahasiswacuti', compact('datacuti'));
     }
     function detail($id)

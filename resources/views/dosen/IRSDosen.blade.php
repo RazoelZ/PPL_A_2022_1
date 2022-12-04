@@ -16,10 +16,13 @@
                 {{ session('gagal') }}
             </div>
         @endif
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi at dolore, exercitationem consectetur quaerat,
-            fugit, deserunt unde necessitatibus laudantium autem provident accusamus aspernatur suscipit nihil vitae
-            corporis tenetur molestiae vero.</p>
-        <table class="table table-striped">
+        <form action="/dashboarddosen/irs" method="GET">
+            <div class="input-group p-3">
+                <input type="search" class="form-control" placeholder="Cari nama mahasiswa" name="search" id="search">
+                <button class="btn btn-outline-primary" type="submit">Button</button>
+            </div>
+        </form>
+        <table class="table table-striped m-3">
             <thead>
                 <tr>
                     <th scope="col">No</th>

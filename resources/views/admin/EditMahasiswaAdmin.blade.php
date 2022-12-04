@@ -87,42 +87,64 @@
                         </div>
                     @enderror
                 </div>
-                <label for="level">Level Aktif</label>
+                <label for="dosenwali">Masukkan dosen wali (jika user mahasiswa)<sup class="text-danger">*</sup></label>
                 <div class="form-group">
-                    <select class="form-control @error('level')
+                    <select
+                        class="form-control @error('dosenwali')
                 is-invalid    
-                @enderror"
-                        name="level" id="level" required>
-                        <option selected disabled>Level</option>
-                        <option value="user">Mahasiswa</option>
-                        <option value="dosen">Dosen</option>
-                        <option value="admin">Admin</option>
-                        <option value="department">Departemen</option>
+                @enderror mb-3"
+                        name="dosenwali" id="dosenwali" required>
+                        <option selected disabled>Dosen Wali</option>
+                        <option value="Prabowo Nur Khalid">Prabowo Nur Khalid</option>
+                        <option value="Yos Sudarso">Yos Sudarso</option>
+                        <option value="Arum Ningtyas">Arum Ningtyas</option>
+                        <option value="Fajar Wulandari">Fajar Wulandari</option>
+                        <option value="Nurul Rini">Nurul Rini</option>
+                        <option value="Mila Kartika Cantika">Mila Kartika Cantika</option>
+                        <option value="Aji Eko Kurniawan">Aji Eko Kurniawan</option>
                     </select>
-                    @error('level')
+                    @error('dosenwali')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="status">Status</label>
+                    <label for="level">Level Aktif</label>
                     <div class="form-group">
                         <select
-                            class="form-control @error('status')
-                    is-invalid    
-                    @enderror"
-                            name="status" id="status" required>
-                            <option selected disabled>Status Keaktifan</option>
-                            <option value="Aktif">Aktif</option>
-                            <option value="Mangkir">Mangkir</option>
-                            <option value="Cuti">Cuti</option>
-                            <option value="Dropout">Dropout</option>
-                            <option value="operator">Operator</option>
+                            class="form-control @error('level')
+                is-invalid    
+                @enderror"
+                            name="level" id="level" required>
+                            <option selected disabled>Level</option>
+                            <option value="user">Mahasiswa</option>
+                            <option value="dosen">Dosen</option>
+                            <option value="admin">Admin</option>
+                            <option value="department">Departemen</option>
                         </select>
-                        @error('status')
+                        @error('level')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
+                        <label for="status">Status</label>
+                        <div class="form-group">
+                            <select
+                                class="form-control @error('status')
+                    is-invalid    
+                    @enderror"
+                                name="status" id="status" required>
+                                <option selected disabled>Status Keaktifan</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Mangkir">Mangkir</option>
+                                <option value="Cuti">Cuti</option>
+                                <option value="Dropout">Dropout</option>
+                                <option value="operator">Operator</option>
+                            </select>
+                            @error('status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
         @endforeach
         <button class="btn btn-primary btn-user btn-block mt-4" type="submit">
             Update Data

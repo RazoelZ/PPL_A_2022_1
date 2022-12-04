@@ -5,8 +5,14 @@
     <!-- Basic Card Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa Aktif</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa Cuti</h6>
         </div>
+        <form action="/dashboarddepartment/mhscuti" method="GET">
+            <div class="input-group px-3 pt-3">
+                <input type="search" class="form-control" placeholder="Cari nama mahasiswa" name="search" id="search">
+                <button class="btn btn-outline-primary" type="submit">Button</button>
+            </div>
+        </form>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
@@ -16,7 +22,7 @@
                         <th scope="col">NIM</th>
                         <th scope="col">jurusan</th>
                         <th scope="col">Angkatan</th>
-                        <th scope="col">Detail Mahasiswa Aktif</th>
+                        <th scope="col">Detail Mahasiswa Cuti</th>
                     </tr>
                 </thead>
                 <tbody>

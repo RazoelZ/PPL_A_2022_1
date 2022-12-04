@@ -63,7 +63,8 @@
                         @enderror
                     </div>
                     <label for="scansks">Scan SKS<sup class="text-danger">*</sup><br>
-                        <sub class="text-danger">Upload scan berupa gambar!</sub></label>
+                        <sub class="text-danger">Upload scan berupa gambar! (jpg, jpeg, png, bmp, gif, svg, or
+                            webp)</sub></label>
                     <img class="img-preview img-fluid mb-3 col-sm-5">
                     <div class="form-group">
                         <input type="file"

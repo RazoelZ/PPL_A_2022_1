@@ -5,6 +5,12 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar User Sistem Informasi</h6>
         </div>
+        <form action="/dashboardadmin/lihatuser" method="GET">
+            <div class="input-group p-3">
+                <input type="search" class="form-control" placeholder="Cari user" name="search" id="search">
+                <button class="btn btn-outline-primary" type="submit">Button</button>
+            </div>
+        </form>
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
@@ -24,11 +30,11 @@
             <tbody>
                 @foreach ($datauser as $item)
                     <tr>
-                        <td>{{ $item['name'] }}</td>
-                        <td>{{ $item['nim'] }}</td>
-                        <td>{{ $item['status'] }}</td>
-                        <td>{{ $item['level'] }}</td>
-                        <td><a href="/dashboardadmin/lihatuser/delete/{{ $item['id'] }}" class="btn btn-danger">Delete</a>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->nim }}</td>
+                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->level }}</td>
+                        <td><a href="/dashboardadmin/lihatuser/delete/{{ $item->id }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

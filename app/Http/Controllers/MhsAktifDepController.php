@@ -8,13 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class MhsAktifDepController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-
-        $dataaktif = DB::table('users')
-            ->where('status', '=', 'aktif', 'and')
-            ->where('level', '=', 'user')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $dataaktif = DB::table('users')
+                ->where('status', '=', 'aktif', 'and')
+                ->where('level', '=', 'user')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $dataaktif = DB::table('users')
+                ->where('status', '=', 'aktif', 'and')
+                ->where('level', '=', 'user')
+                ->paginate(10);
+        }
         return view('department.MahasiswaAktif', compact('dataaktif'));
     }
 

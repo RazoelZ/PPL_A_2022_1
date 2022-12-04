@@ -16,6 +16,12 @@
                 {{ session('gagal') }}
             </div>
         @endif
+        <form action="/dashboarddosen/skripsi" method="GET">
+            <div class="input-group p-3">
+                <input type="search" class="form-control" placeholder="Cari nama mahasiswa" name="search" id="search">
+                <button class="btn btn-outline-primary" type="submit">Button</button>
+            </div>
+        </form>
         <table class="table table-striped">
             <thead>
                 <tr>

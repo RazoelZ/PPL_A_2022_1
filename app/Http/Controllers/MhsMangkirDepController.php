@@ -8,12 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class MhsMangkirDepController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datamangkir = DB::table('users')
-            ->where('status', '=', 'Mangkir', 'and')
-            ->where('level', '=', 'user')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $datamangkir = DB::table('users')
+                ->where('status', '=', 'Mangkir', 'and')
+                ->where('level', '=', 'user')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $datamangkir = DB::table('users')
+                ->where('status', '=', 'Mangkir', 'and')
+                ->where('level', '=', 'user')
+                ->paginate(10);
+        }
         return view('department.mahasiswamangkir', compact('datamangkir'));
     }
     function detail($id)

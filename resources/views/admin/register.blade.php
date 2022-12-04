@@ -82,71 +82,78 @@
                     </div>
                 @enderror
             </div>
-            <label for="dosenwali">Masukkan Dosen Wali Anda</label>
+            <label for="dosenwali">Masukkan dosen wali (jika user mahasiswa)<sup class="text-danger">*</sup></label>
             <div class="form-group">
-                <input type="text"
-                    class="form-control 
-                             @error('dosenwali')
-                        is-invalid    
-                        @enderror"
-                    id="dosenwali" name="dosenwali" placeholder="Masukkan dosenwali (jika user mahasiswa)" required
-                    value="{{ old('dosenwali') }}">
+                <select
+                    class="form-control @error('dosenwali')
+                is-invalid    
+                @enderror mb-3"
+                    name="dosenwali" id="dosenwali" required>
+                    <option selected disabled>Dosen Wali</option>
+                    <option value="Prabowo Nur Khalid">Prabowo Nur Khalid</option>
+                    <option value="Yos Sudarso">Yos Sudarso</option>
+                    <option value="Arum Ningtyas">Arum Ningtyas</option>
+                    <option value="Fajar Wulandari">Fajar Wulandari</option>
+                    <option value="Nurul Rini">Nurul Rini</option>
+                    <option value="Mila Kartika Cantika">Mila Kartika Cantika</option>
+                    <option value="Aji Eko Kurniawan">Aji Eko Kurniawan</option>
+                </select>
                 @error('dosenwali')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
-            </div>
-            <label for="level">level Aktif<sup class="text-danger">*</sup></label>
-            <div class="form-group">
-                <select class="form-control @error('level')
-                is-invalid    
-                @enderror mb-3"
-                    name="level" id="level" required>
-                    <option selected disabled>level</option>
-                    <option value="user">Mahasiswa</option>
-                    <option value="dosen">Dosen</option>
-                    <option value="admin">Admin</option>
-                    <option value="department">Departemen</option>
-                </select>
-                @error('level')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-                <label for="status">Status<sup class="text-danger">*</sup></label>
+                <label for="level">level Aktif<sup class="text-danger">*</sup></label>
                 <div class="form-group">
                     <select
-                        class="form-control @error('status')
-                    is-invalid    
-                    @enderror mb-3"
-                        name="status" id="status" required>
-                        <option selected disabled>Status</option>
-                        <option value="Aktif">Aktif</option>
-                        <option value="Mangkir">Mangkir</option>
-                        <option value="Cuti">Cuti</option>
-                        <option value="Dropout">Dropout</option>
-                        <option value="operator">Operator</option>
+                        class="form-control @error('level')
+                is-invalid    
+                @enderror mb-3"
+                        name="level" id="level" required>
+                        <option selected disabled>level</option>
+                        <option value="user">Mahasiswa</option>
+                        <option value="dosen">Dosen</option>
+                        <option value="admin">Admin</option>
+                        <option value="department">Departemen</option>
                     </select>
-                    @error('status')
+                    @error('level')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="password">Password<sup class="text-danger">*</sup></label>
+                    <label for="status">Status<sup class="text-danger">*</sup></label>
                     <div class="form-group">
-                        <input type="password" name="password"
-                            class="form-control  @error('password') is-invalid @enderror"" id="password"
-                            placeholder="Input your password" required>
-                        @error('password')
+                        <select
+                            class="form-control @error('status')
+                    is-invalid    
+                    @enderror mb-3"
+                            name="status" id="status" required>
+                            <option selected disabled>Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Mangkir">Mangkir</option>
+                            <option value="Cuti">Cuti</option>
+                            <option value="Dropout">Dropout</option>
+                            <option value="operator">Operator</option>
+                        </select>
+                        @error('status')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <button class="btn btn-primary btn-user btn-block" type="submit">
-                        Register
-                    </button>
+                        <label for="password">Password<sup class="text-danger">*</sup></label>
+                        <div class="form-group">
+                            <input type="password" name="password"
+                                class="form-control  @error('password') is-invalid @enderror"" id="password"
+                                placeholder="Input your password" required>
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                            Register
+                        </button>
         </form>
     </div>
 @endsection

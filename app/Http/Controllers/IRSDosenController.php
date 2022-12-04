@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\DB;
 
 class IRSDosenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datairs = DB::table('irs')
-            ->join('users', 'irs.userid', '=', 'users.id')
-            ->select('users.name', 'irs.id', 'irs.semester', 'irs.jmlsks', 'irs.scansks', 'irs.isverified')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $datairs = DB::table('irs')
+                ->join('users', 'irs.userid', '=', 'users.id')
+                ->select('users.name', 'irs.id', 'irs.semester', 'irs.jmlsks', 'irs.scansks', 'irs.isverified')
+                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $datairs = DB::table('irs')
+                ->join('users', 'irs.userid', '=', 'users.id')
+                ->select('users.name', 'irs.id', 'irs.semester', 'irs.jmlsks', 'irs.scansks', 'irs.isverified')
+                ->paginate(10);
+        }
+
         return view('dosen.irsdosen', compact('datairs'));
     }
 

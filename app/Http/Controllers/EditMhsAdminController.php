@@ -34,6 +34,7 @@ class EditMhsAdminController extends Controller
             'nim' => 'integer',
             'jurusan' => 'required|string',
             'angkatan' => 'required|integer',
+            'dosenwali' => 'required',
             'status' => 'required',
             'level' => 'required'
         ]);
