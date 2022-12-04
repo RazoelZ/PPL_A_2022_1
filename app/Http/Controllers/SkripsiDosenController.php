@@ -14,7 +14,8 @@ class SkripsiDosenController extends Controller
             $dataskripsi = DB::table('skripsis')
                 ->join('users', 'skripsis.userid', '=', 'users.id')
                 ->select('users.name', 'skripsis.id', 'skripsis.semester', 'skripsis.tglsidang', 'skripsis.dosenpembimbing', 'skripsis.scansidang', 'skripsis.isverified')
-                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+                ->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('dosenpembimbing', 'LIKE', '%' . $request->search . '%')->paginate(10);
         } else {
             $dataskripsi = DB::table('skripsis')
                 ->join('users', 'skripsis.userid', '=', 'users.id')

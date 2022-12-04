@@ -7,7 +7,8 @@
         </div>
         <form action="/dashboardadmin/viewuser" method="GET">
             <div class="input-group p-3">
-                <input type="search" class="form-control" placeholder="Cari user" name="search" id="search">
+                <input type="search" class="form-control" placeholder="Cari user / Dosen Wali / NIM/NIP / level" name="search"
+                    id="search">
                 <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
             <div class="d-flex justify-content-end pr-3">

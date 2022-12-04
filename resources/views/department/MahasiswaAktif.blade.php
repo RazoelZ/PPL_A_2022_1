@@ -15,7 +15,7 @@
             </div>
         </form>
         <div class="card-body">
-            <table class="table table-striped m-3">
+            <table class="table table-striped mr-3">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

@@ -151,4 +151,9 @@
         </button>
         </form>
     </div>
+    <div class="pt-5">
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+    </div>
+    </div>
+    </div>
 @endsection

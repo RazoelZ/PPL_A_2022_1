@@ -7,7 +7,8 @@
         </div>
         <form action="/dashboardadmin/lihatuser" method="GET">
             <div class="input-group p-3">
-                <input type="search" class="form-control" placeholder="Cari user" name="search" id="search">
+                <input type="search" class="form-control" placeholder="Cari user / NIM/NIP / Status / Level" name="search"
+                    id="search">
                 <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
         </form>
@@ -40,6 +41,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $datauser->links() }}
     </div>
     <script>
         var tables = document.getElementsByTagName('table');

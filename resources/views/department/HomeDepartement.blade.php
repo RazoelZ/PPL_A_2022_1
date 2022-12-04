@@ -45,7 +45,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Mahasiswa <b>Cuti</b>
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Mahasiswa
+                                    <b>Cuti</b>
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -73,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="px-3" id="barchart_material" style="width: 1200px; height: 500px;"></div>
+        <div class="px-3 pb-3" id="barchart_material" style="width: 1200px; height: 500px;"></div>
     </div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

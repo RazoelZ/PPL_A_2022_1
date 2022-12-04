@@ -157,10 +157,11 @@
     </div>
     </div>
     </div>
+    <div class="card-header bg-secondary">
+        <h6 class="m-0 font-weight-bold text-white">Daftarkan Dengan Mengimport Excel</h6>
+    </div>
     <div class="card shadow p-3">
-        <div class="card-header">
-            <h6 class="m-0 font-weight-bold text-primary">Daftarkan Dengan Mengimport Excel</h6>
-        </div>
+
         <form action="{{ route('mahasiswa.import') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">

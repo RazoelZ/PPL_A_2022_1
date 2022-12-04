@@ -14,7 +14,8 @@ class PKLDosenController extends Controller
             $datapkl = DB::table('p_k_l_s')
                 ->join('users', 'p_k_l_s.userid', '=', 'users.id')
                 ->select('users.name', 'p_k_l_s.id', 'p_k_l_s.semester', 'p_k_l_s.instansi', 'p_k_l_s.dosenpengampu', 'p_k_l_s.scanpkl', 'p_k_l_s.isverified')
-                ->where('name', 'LIKE', '%' . $request->search . '%')->paginate(10);
+                ->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('dosenpengampu', 'LIKE', '%' . $request->search . '%')->paginate(10);
         } else {
             $datapkl = DB::table('p_k_l_s')
                 ->join('users', 'p_k_l_s.userid', '=', 'users.id')

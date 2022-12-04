@@ -18,7 +18,8 @@
         @endif
         <form action="/dashboarddosen/pkl" method="GET">
             <div class="input-group p-3">
-                <input type="search" class="form-control" placeholder="Cari Nama Mahasiswa" name="search" id="search">
+                <input type="search" class="form-control" placeholder="Cari Nama Mahasiswa / Dosen Pengampu" name="search"
+                    id="search">
                 <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
         </form>

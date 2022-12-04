@@ -24,6 +24,8 @@ class UserAdminController extends Controller
         if ($request->has('search')) {
             $mahasiswa =  DB::table('users')->where('name', 'LIKE', '%' . $request->search . '%')
                 ->orWhere('level', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('nim', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('dosenwali', 'LIKE', '%' . $request->search . '%')
                 ->paginate(10);
         } else {
             $mahasiswa =  DB::table('users')->paginate(10);
@@ -34,7 +36,11 @@ class UserAdminController extends Controller
     public function showuser(Request $request)
     {
         if ($request->has('search')) {
-            $datauser =  DB::table('users')->orderBy('level', 'asc')->where('name', 'LIKE', '%' . $request->search . '%')
+            $datauser =  DB::table('users')->orderBy('level', 'asc')
+                ->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('nim', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('status', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('level', 'LIKE', '%' . $request->search . '%')
                 ->paginate(10);
         } else {
             $datauser =  DB::table('users')->orderBy('level', 'asc')->paginate(10);

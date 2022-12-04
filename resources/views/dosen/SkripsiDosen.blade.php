@@ -18,11 +18,12 @@
         @endif
         <form action="/dashboarddosen/skripsi" method="GET">
             <div class="input-group p-3">
-                <input type="search" class="form-control" placeholder="Cari Nama Mahasiswa" name="search" id="search">
+                <input type="search" class="form-control" placeholder="Cari Nama Mahasiswa / Dosen Pembimbing"
+                    name="search" id="search">
                 <button class="btn btn-outline-primary" type="submit">Cari</button>
             </div>
         </form>
-        <table class="table table-striped">
+        <table class="table table-striped ml-3">
             <thead>
                 <tr>
                     <th scope="col">No</th>
