@@ -64,37 +64,45 @@
                     </div>
                     <label for="dosenpengampu">Dosen Pengampu<sup class="text-danger">*</sup></label>
                     <div class="form-group">
-                        <input type="text"
-                            class="form-control  @error('dosenpengampu')
-                        is-invalid    
-                        @enderror"
-                            id="dosenpengampu" name="dosenpengampu" placeholder="Dosen Pengampu" required
-                            value="{{ old('dosenpengampu') }}">
+                        <select
+                            class="form-control @error('dosenpengampu')
+                is-invalid    
+                @enderror mb-3"
+                            name="dosenpengampu" id="dosenpengampu" required>
+                            <option selected disabled>Dosen Pengampu</option>
+                            <option value="Prabowo Nur Khalid">Prabowo Nur Khalid</option>
+                            <option value="Yos Sudarso">Yos Sudarso</option>
+                            <option value="Arum Ningtyas">Arum Ningtyas</option>
+                            <option value="Fajar Wulandari">Fajar Wulandari</option>
+                            <option value="Nurul Rini">Nurul Rini</option>
+                            <option value="Mila Kartika Cantika">Mila Kartika Cantika</option>
+                            <option value="Aji Eko Kurniawan">Aji Eko Kurniawan</option>
+                        </select>
                         @error('dosenpengampu')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <label for="scanpkl">Scan PKL<sup class="text-danger">*</sup><br>
-                        <sub class="text-danger">Upload scan berupa gambar! (jpg, jpeg, png, bmp, gif, svg, or
-                            webp)</sub></label>
-                    <img class="img-preview img-fluid mb-3 col-sm-5">
-                    <div class="form-group">
-                        <input type="file"
-                            class="form-control  @error('scanpkl')
+                        <label for="scanpkl">Scan PKL<sup class="text-danger">*</sup><br>
+                            <sub class="text-danger">Upload scan berupa gambar! (jpg, jpeg, png, bmp, gif, svg, or
+                                webp)</sub></label>
+                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                        <div class="form-group">
+                            <input type="file"
+                                class="form-control  @error('scanpkl')
                         is-invalid    
                         @enderror"
-                            id="scanpkl" name="scanpkl" onchange="previewImage()" required value="{{ old('scanpkl') }}">
-                        @error('scanpkl')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                        Submit
-                    </button>
+                                id="scanpkl" name="scanpkl" onchange="previewImage()" required
+                                value="{{ old('scanpkl') }}">
+                            @error('scanpkl')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Submit
+                        </button>
             </form>
         </div>
     </div>

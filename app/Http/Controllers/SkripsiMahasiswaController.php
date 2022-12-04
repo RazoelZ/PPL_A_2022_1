@@ -34,7 +34,7 @@ class SkripsiMahasiswaController extends Controller
         } else {
             $request->file('scansidang')->storeAs('post-scansidang', $nameimg);
             Skripsi::create($validatedata);
-            return redirect('/dashboardmahasiswa/IsiPKLMahasiswa')->with('success', 'Data berhasil di masukkan');
+            return redirect('/dashboardmahasiswa/IsiSkripsiMahasiswa')->with('success', 'Data berhasil di masukkan');
             // return $request;
         }
     }

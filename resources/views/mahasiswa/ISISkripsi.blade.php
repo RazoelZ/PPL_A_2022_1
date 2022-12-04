@@ -65,66 +65,73 @@
                 </div>
                 <label for="dosenpembimbing">Dosen Pembimbing<sup class="text-danger">*</sup></label>
                 <div class="form-group">
-                    <input type="text"
-                        class="form-control  @error('dosenpembimbing')
-                        is-invalid    
-                        @enderror"
-                        id="dosenpembimbing" name="dosenpembimbing" placeholder="Dosen Pembimbing" required
-                        value="{{ old('dosenpembimbing') }}">
+                    <select
+                        class="form-control @error('dosenpembimbing')
+            is-invalid    
+            @enderror mb-3"
+                        name="dosenpembimbing" id="dosenpembimbing" required>
+                        <option selected disabled>Dosen Pembimbing</option>
+                        <option value="Prabowo Nur Khalid">Prabowo Nur Khalid</option>
+                        <option value="Yos Sudarso">Yos Sudarso</option>
+                        <option value="Arum Ningtyas">Arum Ningtyas</option>
+                        <option value="Fajar Wulandari">Fajar Wulandari</option>
+                        <option value="Nurul Rini">Nurul Rini</option>
+                        <option value="Mila Kartika Cantika">Mila Kartika Cantika</option>
+                        <option value="Aji Eko Kurniawan">Aji Eko Kurniawan</option>
+                    </select>
                     @error('dosenpembimbing')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
-                <label for="scansidang">Upload Berita Acara Sidang<sup class="text-danger">*</sup><br>
-                    <sub class="text-danger">Upload scan berupa gambar! (jpg, jpeg, png, bmp, gif, svg, or webp)</sub>
-                </label> <img class="img-preview img-fluid mb-3 col-sm-5">
-                <div class="form-group">
-                    <input type="file"
-                        class="form-control  @error('scansidang')
+                    <label for="scansidang">Upload Berita Acara Sidang<sup class="text-danger">*</sup><br>
+                        <sub class="text-danger">Upload scan berupa gambar! (jpg, jpeg, png, bmp, gif, svg, or webp)</sub>
+                    </label> <img class="img-preview img-fluid mb-3 col-sm-5">
+                    <div class="form-group">
+                        <input type="file"
+                            class="form-control  @error('scansidang')
                     is-invalid    
                     @enderror"
-                        id="scansidang" name="scansidang" placeholder="Jumlah SKS" onchange="previewImage()" required
-                        value="{{ old('scansidang') }}">
-                    @error('scansidang')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                            id="scansidang" name="scansidang" placeholder="Jumlah SKS" onchange="previewImage()" required
+                            value="{{ old('scansidang') }}">
+                        @error('scansidang')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <button class="btn btn-primary btn-user btn-block" type="submit">
+                        Submit
+                    </button>
                 </div>
-                <button class="btn btn-primary btn-user btn-block" type="submit">
-                    Submit
-                </button>
+            </form>
+            <div class="px-3">
+                <table class="table table-striped">
+                    <thead>
+                        @foreach ($data as $item)
+                            <tr>
+                                <th scope="col">Semester</th>
+                                <th scope="col">{{ $item['semester'] }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Tanggal Sidang</th>
+                                <th scope="col">{{ $item['tglsidang'] }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Dosen Pembimbing</th>
+                                <th scope="col">{{ $item['dosenpembimbing'] }}</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Scan Sidang</th>
+                                <th scope="col">{{ $item['scansidang'] }}</th>
+                            </tr>
+                        @endforeach
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </form>
-        <div class="px-3">
-            <table class="table table-striped">
-                <thead>
-                    @foreach ($data as $item)
-                        <tr>
-                            <th scope="col">Semester</th>
-                            <th scope="col">{{ $item['semester'] }}</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Tanggal Sidang</th>
-                            <th scope="col">{{ $item['tglsidang'] }}</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Dosen Pembimbing</th>
-                            <th scope="col">{{ $item['dosenpembimbing'] }}</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Scan Sidang</th>
-                            <th scope="col">{{ $item['scansidang'] }}</th>
-                        </tr>
-                    @endforeach
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-    </div>
     </div>
     <script>
         function previewImage() {
