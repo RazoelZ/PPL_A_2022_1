@@ -16,6 +16,13 @@ class SkripsiDosenController extends Controller
             ->paginate(10);
         return view('dosen.skripsidosen', compact('dataskripsi'));
     }
+    public function download($id)
+    {
+
+        $downloadskripsi = DB::table('skripsis')->where('id', '=', $id)->first();
+        $filepath = public_path("storage/post-scansidang/{$downloadskripsi->scansidang}");
+        return response()->download($filepath);
+    }
     public function changestatus(Request $request)
     {
         $dataskripsi = Skripsi::find($request->id);
@@ -23,7 +30,7 @@ class SkripsiDosenController extends Controller
         $dataskripsi->isverified = $request->isverified;
         // dd($request);
         $dataskripsi->update(['isverified' => 1]);
-        return redirect('/dashboarddosen/skripsi');
+        return redirect('/dashboarddosen/skripsi')->with('success', 'Skripsi setujui');
     }
 
     public function unchangestatus(Request $request)
@@ -32,6 +39,6 @@ class SkripsiDosenController extends Controller
 
         $dataskripsi->isverified = $request->isverified;
         $dataskripsi->update(['isverified' => 0]);
-        return redirect('/dashboarddosen/skripsi');
+        return redirect('/dashboarddosen/skripsi')->with('gagal', 'Skripsi tidak disetujui');
     }
 }

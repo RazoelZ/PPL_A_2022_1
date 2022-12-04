@@ -27,6 +27,14 @@ class KHSDosenController extends Controller
         return view('dosen.khsdosen', compact('datakhs'));
     }
 
+    public function download($id)
+    {
+
+        $downloadkhs = DB::table('k_h_s')->where('id', '=', $id)->first();
+        $filepath = public_path("storage/post-scankhs/{$downloadkhs->scankhs}");
+        return response()->download($filepath);
+    }
+
     public function changestatus(Request $request)
     {
         $datakhs = KHS::find($request->id);
@@ -34,7 +42,7 @@ class KHSDosenController extends Controller
         $datakhs->isverified = $request->isverified;
         // dd($request);
         $datakhs->update(['isverified' => 1]);
-        return redirect('/dashboarddosen/khs');
+        return redirect('/dashboarddosen/khs')->with('success', 'KHS setujui');
     }
 
     public function unchangestatus(Request $request)
@@ -44,6 +52,6 @@ class KHSDosenController extends Controller
         $datakhs->isverified = $request->isverified;
         // dd($request);
         $datakhs->update(['isverified' => 0]);
-        return redirect('/dashboarddosen/khs');
+        return redirect('/dashboarddosen/khs')->with('gagal', 'KHS tidak disetujui');
     }
 }

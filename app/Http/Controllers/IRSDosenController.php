@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\IRS;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,6 +18,15 @@ class IRSDosenController extends Controller
         return view('dosen.irsdosen', compact('datairs'));
     }
 
+
+    public function download($id)
+    {
+
+        $downloadirs = DB::table('irs')->where('id', '=', $id)->first();
+        $filepath = public_path("storage/post-scansks/{$downloadirs->scansks}");
+        return response()->download($filepath);
+    }
+
     public function changestatus(Request $request)
     {
         $datairs = IRS::find($request->id);
@@ -24,7 +34,7 @@ class IRSDosenController extends Controller
         $datairs->isverified = $request->isverified;
         // dd($request);
         $datairs->update(['isverified' => 1]);
-        return redirect('/dashboarddosen/irs');
+        return redirect('/dashboarddosen/irs')->with('success', 'IRS setujui');
     }
 
     public function unchangestatus(Request $request)
@@ -34,6 +44,6 @@ class IRSDosenController extends Controller
         $datairs->isverified = $request->isverified;
         // dd($request);
         $datairs->update(['isverified' => 0]);
-        return redirect('/dashboarddosen/irs');
+        return redirect('/dashboarddosen/irs')->with('gagal', 'IRS tidak disetujui');
     }
 }

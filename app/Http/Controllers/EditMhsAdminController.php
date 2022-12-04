@@ -12,8 +12,11 @@ class EditMhsAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return view('admin.editmahasiswaadmin');
+    public function index($id)
+    {
+        $data = User::query()
+            ->where('id', $id)->get();
+        return view('admin.editmahasiswaadmin', compact('data'));
     }
 
     /**
@@ -23,21 +26,21 @@ class EditMhsAdminController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $validatedata = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|',
-            'nim' => 'required|integer',
+            'email' => 'email:dns',
+            'nim' => 'integer',
             'jurusan' => 'required|string',
             'angkatan' => 'required|integer',
-            'alamat' => 'required|string',
-            'nomortlp' => 'required'
+            'status' => 'required',
+            'level' => 'required'
         ]);
         //('angkatan', $id)->get();
-        $validatedata['id'] = auth()->user()->id;
-        User::where('id', auth()->user()->id)->update($validatedata);
 
+        User::where('id', $id)->update($validatedata);
         return redirect('/dashboardadmin/viewuser')->with('success', 'Data berhasil di Perbarui');
+        // return dd($validatedata);
     }
 }

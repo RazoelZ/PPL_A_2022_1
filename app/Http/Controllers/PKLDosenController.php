@@ -16,6 +16,14 @@ class PKLDosenController extends Controller
             ->paginate(10);
         return view('dosen.pkldosen', compact('datapkl'));
     }
+
+    public function download($id)
+    {
+
+        $downloadpkl = DB::table('p_k_l_s')->where('id', '=', $id)->first();
+        $filepath = public_path("storage/post-scanpkl/{$downloadpkl->scanpkl}");
+        return response()->download($filepath);
+    }
     public function changestatus(Request $request)
     {
         $datapkl = PKL::find($request->id);
@@ -23,7 +31,7 @@ class PKLDosenController extends Controller
         $datapkl->isverified = $request->isverified;
         // dd($request);
         $datapkl->update(['isverified' => 1]);
-        return redirect('/dashboarddosen/pkl');
+        return redirect('/dashboarddosen/pkl')->with('success', 'PKL setujui');
     }
 
     public function unchangestatus(Request $request)
@@ -33,6 +41,6 @@ class PKLDosenController extends Controller
         $datapkl->isverified = $request->isverified;
         // dd($request);
         $datapkl->update(['isverified' => 0]);
-        return redirect('/dashboarddosen/pkl');
+        return redirect('/dashboarddosen/pkl')->with('gagal', 'PKL tidak disetujui');
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardDepartmentController;
 use App\Http\Controllers\DashboardDosenController;
 use App\Http\Controllers\DashboardMhsController;
+use App\Http\Controllers\editdataadmin;
 use App\Http\Controllers\EditProfileMahasiswaController;
 use App\Http\Controllers\IRSDosenController;
 use App\Http\Controllers\IRSMahasiswaController;
@@ -71,19 +72,23 @@ Route::put('/dashboardmahasiswa/profile/edit', [EditProfileMahasiswaController::
 Route::get('/dashboarddosen', [DashboardDosenController::class, 'index'])->middleware('dosen');
 
 Route::get('/dashboarddosen/irs', [IRSDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/irs/download/{id}', [IRSDosenController::class, 'download'])->middleware('dosen');
 Route::get('/dashboarddosen/irs/verify/{id}', [IRSDosenController::class, 'changestatus'])->middleware('dosen');
 Route::get('/dashboarddosen/irs/unverify/{id}', [IRSDosenController::class, 'unchangestatus'])->middleware('dosen');
 //KHS
 Route::get('/dashboarddosen/khs', [KHSDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/khs/download/{id}', [KHSDosenController::class, 'download'])->middleware('dosen');
 Route::get('/dashboarddosen/khs/verify/{id}', [KHSDosenController::class, 'changestatus'])->middleware('dosen');
 Route::get('/dashboarddosen/khs/unverify/{id}', [KHSDosenController::class, 'unchangestatus'])->middleware('dosen');
 //PKL
 Route::get('/dashboarddosen/pkl', [PKLDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/pkl/download/{id}', [PKLDosenController::class, 'download'])->middleware('dosen');
 Route::get('/dashboarddosen/pkl/verify/{id}', [PKLDosenController::class, 'changestatus'])->middleware('dosen');
 Route::get('/dashboarddosen/pkl/unverify/{id}', [PKLDosenController::class, 'unchangestatus'])->middleware('dosen');
 
 //SKRIPSI
 Route::get('/dashboarddosen/skripsi', [SkripsiDosenController::class, 'index'])->middleware('dosen');
+Route::get('/dashboarddosen/skripsi/download/{id}', [SkripsiDosenController::class, 'download'])->middleware('dosen');
 Route::get('/dashboarddosen/skripsi/verify/{id}', [SkripsiDosenController::class, 'changestatus'])->middleware('dosen');
 Route::get('/dashboarddosen/skripsi/unverify/{id}', [SkripsiDosenController::class, 'unchangestatus'])->middleware('dosen');
 
@@ -97,15 +102,13 @@ Route::get('/dashboardadmin/viewuser/delete/irs/{id}', [UserAdminController::cla
 Route::get('/dashboardadmin/viewuser/delete/khs/{id}', [UserAdminController::class, 'hapuskhs'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/pkl/{id}', [UserAdminController::class, 'hapuspkl'])->middleware('admin');
 Route::get('/dashboardadmin/viewuser/delete/skripsi/{id}', [UserAdminController::class, 'hapusskripsi'])->middleware('admin');
-Route::get('/dashboardadmin/viewuser/update/{id}', [UserAdminController::class, 'toprofildata'])->middleware('admin');
-Route::put('/dashboardadmin/viewuser/update/{id}/data', [UserAdminController::class, 'update'])->middleware('admin');
 
 //register user
 Route::get('/dashboardadmin/register', [RegisterController::class, 'index'])->middleware('admin');
 Route::post('/dashboardadmin/register', [RegisterController::class, 'store'])->middleware('admin');
 //edituser
-Route::get('/dashboardadmin/edituser', [EditMhsAdminController::class, 'index'])->middleware('admin');
-Route::put('/dashboardadmin/edituser', [EditMhsAdminController::class, 'update'])->middleware('admin');
+Route::get('/dashboardadmin/edituser/{id}', [EditMhsAdminController::class, 'index'])->middleware('admin');
+Route::put('/dashboardadmin/edituser/{id}', [EditMhsAdminController::class, 'update'])->middleware('admin');
 //lihatuser
 Route::get('/dashboardadmin/lihatuser', [UserAdminController::class, 'showuser'])->middleware('admin');
 Route::get('/dashboardadmin/lihatuser/delete/{id}', [UserAdminController::class, 'destroy'])->middleware('admin');

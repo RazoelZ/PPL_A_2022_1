@@ -18,7 +18,7 @@ class MhsCutiDepController extends Controller
     }
     function detail($id)
     {
-        $datacuti = User::find($id);
-        return view('department.MahasiswaDetail', compact('datacuti'));
+        $dataaktif = User::find($id);
+        return view('department.MahasiswaDetail', compact('dataaktif'));
     }
 }

@@ -76,7 +76,6 @@
         <div class="px-3" id="barchart_material" style="width: 1200px; height: 500px;"></div>
     </div>
 
-    </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {

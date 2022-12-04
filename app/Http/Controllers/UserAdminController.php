@@ -74,31 +74,4 @@ class UserAdminController extends Controller
         $res = User::find($id)->delete();
         return redirect('/dashboardadmin/lihatuser')->with('success', 'Hapus data mahasiswa berhasil!');
     }
-
-    public function toprofildata($id)
-    {
-        $user = User::query()
-            ->where('id', '=', $id)
-            ->get();
-        return view('admin.detailprofileadmin', compact('user'));
-    }
-
-    public function update(Request $request, User $user)
-    {
-        $validatedata = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email:dns',
-            'nim' => 'required',
-            'jurusan' => 'required',
-            'angkatan' => 'required',
-            'level' => 'required',
-            'status' => 'required',
-            'dosenwali' => 'max:255',
-        ]);
-        //('angkatan', $id)->get();
-        $validatedata['id'] = auth()->user()->id;
-        User::where('id', auth()->user()->id)->update($validatedata);
-
-        return redirect('/dashboardmahasiswa/viewuser')->with('success', 'Data berhasil di Perbarui');
-    }
 }

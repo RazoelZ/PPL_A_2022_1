@@ -10,11 +10,17 @@ class MhsAktifDepController extends Controller
 {
     public function index()
     {
+
         $dataaktif = DB::table('users')
             ->where('status', '=', 'aktif', 'and')
             ->where('level', '=', 'user')
             ->paginate(10);
         return view('department.MahasiswaAktif', compact('dataaktif'));
+    }
+
+    public function download()
+    {
+        // return Excel::class
     }
 
     function detail($id)

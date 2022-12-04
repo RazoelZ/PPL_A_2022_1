@@ -6,19 +6,12 @@
             {{ session('success') }}
         </div>
     @endif
-
-    @if (session()->has('logingagal'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('logingagal') }}
-        </div>
-    @endif
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Update User</h6>
         </div>
         @foreach ($user as $item)
-            <form class="user p-5" action="/dashboardadmin/viewuser/update/{id}/data" method="POST">
+            <form class="user px-5 pt-3" action="/dashboardadmin/viewuser/update/{id}" method="POST">
                 @method('put')
                 @csrf
                 <label for="name">Nama<sup class="text-danger">*</sup></label>
@@ -128,9 +121,10 @@
                             </div>
                         @enderror
                         <button class="btn btn-primary btn-user btn-block" type="submit">
-                            Register
-                        </button>
+                            Update Data </button>
             </form>
         @endforeach
+    </div>
+    </div>
     </div>
 @endsection
